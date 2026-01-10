@@ -752,3 +752,212 @@ button:hover {
         overflow-y: auto;
     }
 }
+
+/* Responsive Design Overrides */
+
+/* Tablet and Smaller Desktops (max-width: 1024px) */
+@media (max-width: 1024px) {
+
+    .header,
+    .footer,
+    .hero,
+    .testimonials {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .right-hero-container h1 {
+        font-size: 2.5rem;
+        line-height: 3.2rem;
+    }
+
+    .profile-container {
+        padding: 20px 15px;
+    }
+
+    .logo-footer-container h2 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+    .header {
+        padding: 20px 20px 20px 20px;
+        flex-direction: row;
+        /* Keep row but adjust if needed, mostly gap/padding */
+    }
+
+    /* If header breaks on 768, usually simpler to keep it row but smaller, 
+       or full stack if menu is large. Currently just logo and contact. 
+       Let's keep row but reduce gap or stack if very tight. 
+       The previous plan said padding adjustment. */
+
+    .hero {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 3rem;
+    }
+
+    .right-hero-container,
+    .left-hero-container {
+        width: 100%;
+    }
+
+    .right-hero-container {
+        align-items: center;
+        text-align: center;
+    }
+
+    .right-hero-container button {
+        margin: 0 auto;
+    }
+
+    .testimonials {
+        padding: 40px 20px;
+    }
+
+    .top-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .profile-container {
+        width: 45%;
+        min-width: 280px;
+        margin-bottom: 2rem;
+    }
+
+    .footer {
+        padding: 40px 20px;
+    }
+
+    /* Fix for footer wrapping */
+    .wholecontainer {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+
+    .right-footer-container {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .header {
+        padding: 15px;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .right-container {
+        justify-content: center;
+    }
+
+    .logo-container img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .sitename {
+        font-size: 1.2rem;
+    }
+
+    .right-hero-container h1 {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+
+    .hero {
+        padding: 30px 15px;
+    }
+
+    .left-hero-container {
+        padding: 25px 20px;
+    }
+
+    .benefit-container p {
+        font-size: 0.9rem;
+    }
+
+    .price {
+        font-size: 1.8rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+        padding: 40px 15px;
+    }
+
+    .testimonials-container h1,
+    .hear-container h1 {
+        text-align: center;
+    }
+
+    .hear-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .real-container {
+        width: 100%;
+        display: block;
+        /* Ensure it takes full width */
+    }
+
+    .top-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-container {
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .second-proflie-container {
+        transform: none;
+        margin-top: 0;
+        box-shadow: none;
+        /* Reset shadow rotation effect if needed, or keep normal shadow */
+        border: solid 1px #e0e0e0;
+        /* Match others */
+    }
+
+    /* Footer */
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 20px;
+    }
+
+    .wholecontainer {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .join,
+    .empower {
+        font-size: 1rem;
+    }
+
+    button {
+        width: 100%;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+
+    /* Ensure modal overlays and modals work on mobile */
+    .modal {
+        width: 95%;
+        padding: 16px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.2rem;
+    }
+}
