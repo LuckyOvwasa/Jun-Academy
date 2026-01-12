@@ -57,6 +57,79 @@ if (paymentModalOverlay) {
 
 
 /* --- Form Submission & Success Modal Logic --- */
+// const successModalOverlay = document.getElementById("successModalOverlay");
+// const closeSuccessModalBtn = document.getElementById("closeSuccessModal");
+// const paymentForm = document.querySelector(".confirm-form");
+
+// if (paymentForm) {
+//   paymentForm.addEventListener("submit", function (e) {
+//     e.preventDefault();
+
+//     const formData = new FormData(paymentForm);
+//     const actionUrl = paymentForm.getAttribute("action");
+
+//     const submitBtn = paymentForm.querySelector("button[type='submit']");
+//     const originalBtnText = submitBtn.innerText;
+//     submitBtn.innerText = "Submitting...";
+//     submitBtn.disabled = true;
+
+//     fetch(actionUrl, {
+//       method: "POST",
+//       body: formData,
+//       headers: {
+//         'Accept': 'application/json'
+//       }
+//     })
+//       .then(response => {
+//         if (response.ok) {
+//           // Success
+//           if (paymentModalOverlay) paymentModalOverlay.classList.remove("active");
+
+//           if (successModalOverlay) {
+//             // Small delay to ensure payment modal is gone and transition is smooth
+//             setTimeout(() => {
+//               successModalOverlay.classList.add("active");
+//               successModalOverlay.style.display = "flex"; // Force display
+//             }, 100);
+//           }
+//           paymentForm.reset();
+//         } else {
+//           alert("There was an issue submitting the form. Please try again.");
+//           console.error("Form submission failed:", response);
+//         }
+//       })
+//       .catch(error => {
+//         console.error("Error:", error);
+//         alert("There was an error submitting the form. Please check your connection and try again.");
+//       })
+//       .finally(() => {
+//         submitBtn.innerText = originalBtnText;
+//         submitBtn.disabled = false;
+//       });
+//   });
+// }
+
+// // Close Success Modal
+// if (closeSuccessModalBtn) {
+//   closeSuccessModalBtn.addEventListener("click", () => {
+//     if (successModalOverlay) {
+//       successModalOverlay.classList.remove("active");
+//       successModalOverlay.style.display = ""; // Clear inline style
+//     }
+//   });
+// }
+
+// // Close Success Modal when clicking outside
+// if (successModalOverlay) {
+//   successModalOverlay.addEventListener("click", (e) => {
+//     if (e.target === successModalOverlay) {
+//       successModalOverlay.classList.remove("active");
+//       successModalOverlay.style.display = ""; // Clear inline style
+//     }
+//   });
+// }
+
+/* --- Form Submission & Success Modal Logic --- */
 const successModalOverlay = document.getElementById("successModalOverlay");
 const closeSuccessModalBtn = document.getElementById("closeSuccessModal");
 const paymentForm = document.querySelector(".confirm-form");
@@ -77,30 +150,26 @@ if (paymentForm) {
       method: "POST",
       body: formData,
       headers: {
-        'Accept': 'application/json'
+        "Accept": "application/json"
       }
     })
       .then(response => {
         if (response.ok) {
-          // Success
-          if (paymentModalOverlay) paymentModalOverlay.classList.remove("active");
+          // Close payment modal
+          paymentModalOverlay.classList.remove("active");
 
-          if (successModalOverlay) {
-            // Small delay to ensure payment modal is gone and transition is smooth
-            setTimeout(() => {
-              successModalOverlay.classList.add("active");
-              successModalOverlay.style.display = "flex"; // Force display
-            }, 100);
-          }
+          // Open success modal (after payment modal closes)
+          setTimeout(() => {
+            successModalOverlay.classList.add("active");
+          }, 150);
+
           paymentForm.reset();
         } else {
           alert("There was an issue submitting the form. Please try again.");
-          console.error("Form submission failed:", response);
         }
       })
-      .catch(error => {
-        console.error("Error:", error);
-        alert("There was an error submitting the form. Please check your connection and try again.");
+      .catch(() => {
+        alert("Network error. Please try again.");
       })
       .finally(() => {
         submitBtn.innerText = originalBtnText;
@@ -109,22 +178,18 @@ if (paymentForm) {
   });
 }
 
-// Close Success Modal
+// Close success modal
 if (closeSuccessModalBtn) {
   closeSuccessModalBtn.addEventListener("click", () => {
-    if (successModalOverlay) {
-      successModalOverlay.classList.remove("active");
-      successModalOverlay.style.display = ""; // Clear inline style
-    }
+    successModalOverlay.classList.remove("active");
   });
 }
 
-// Close Success Modal when clicking outside
+// Close success modal on overlay click
 if (successModalOverlay) {
   successModalOverlay.addEventListener("click", (e) => {
     if (e.target === successModalOverlay) {
       successModalOverlay.classList.remove("active");
-      successModalOverlay.style.display = ""; // Clear inline style
     }
   });
 }
