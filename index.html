@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="./images/Jun Favicon.png">
 </head>
 
 <body>
@@ -106,6 +107,13 @@
                     check_circle
                 </span>
                 <p>Job Ready Portfolio (3+ Real World Projects)</p>
+            </div>
+
+            <div class="benefit-container">
+                <span class="material-icons">
+                    check_circle
+                </span>
+                <p>Vibe Coding</p>
             </div>
 
             <button class="btn-primary js-open-modal">
@@ -364,11 +372,13 @@
                     <h3>Payment Confirmation</h3>
                     <p class="form-subtitle">Kindly Submit the following details to confirm your spot:</p>
 
-                    <form class="confirm-form" action="https://formsubmit.co/enroll@junacademy.com" method="POST"
-                        enctype="multipart/form-data">
+                    <form class="confirm-form" action="https://formsubmit.co/9d085fc4a8a1b239e46acbcee1ebd3ed"
+                        method="POST" enctype="multipart/form-data">
                         <!-- FormSubmit Configuration -->
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_subject" value="New Enrollment Submission">
+                        <input type="hidden" name="_replyto" value="%email%">
+
 
                         <div class="form-group">
                             <label>Full Name</label>
@@ -384,7 +394,7 @@
                         </div>
                         <div class="form-group">
                             <label>Payment Receipt</label>
-                            <input type="file" name="payment_receipt" required>
+                            <input type="file" name="payment_receipt" accept=".jpg,.jpeg,.png,.pdf" required>
                         </div>
 
                         <button type="submit" class="btn-primary full-width">Submit Enrollment</button>
@@ -392,7 +402,26 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <!-- Success Modal -->
+        <div id="successModalOverlay" class="modal-overlay">
+            <div class="modal success-modal">
+                <div class="modal-header header-right">
+                    <button id="closeSuccessModal" class="close-btn success-close-btn">
+                        <span class="material-icons">cancel</span> Close
+                    </button>
+                </div>
+
+                <div class="success-content">
+                    <div class="thumbs-up-container">
+                        <span class="material-icons thumbs-up-icon">thumb_up</span>
+                    </div>
+                    <h2>Submitted</h2>
+                    <p>Thank you for submitting your payment proof! Our team will verify your payment and contact you
+                        within 24–48 hours.</p>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -400,7 +429,7 @@
 
 
 
-    <script src="./index.js"></script>
+        <script src="./index.js"></script>
 </body>
 
 </html>
