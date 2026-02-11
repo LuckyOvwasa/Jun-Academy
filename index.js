@@ -193,3 +193,38 @@ if (successModalOverlay) {
     }
   });
 }
+
+const copyBtn = document.getElementById("copyAccountBtn");
+const accountNumberText = document.getElementById("accountNumber");
+const copyToast = document.getElementById("copyToast");
+
+if (copyBtn && accountNumberText) {
+  copyBtn.addEventListener("click", () => {
+    const number = accountNumberText.innerText;
+
+    navigator.clipboard.writeText(number)
+      .then(() => {
+        // Change icon to checkmark
+        copyBtn.innerText = "check";
+
+        // Show toast message
+        if (copyToast) {
+          copyToast.classList.add("show");
+
+          setTimeout(() => {
+            copyToast.classList.remove("show");
+          }, 2000);
+        }
+
+        // Revert icon
+        setTimeout(() => {
+          copyBtn.innerText = "content_copy";
+        }, 1500);
+      })
+      .catch(err => {
+        console.error("Copy failed:", err);
+        alert("Unable to copy. Please copy manually.");
+      });
+  });
+}
+

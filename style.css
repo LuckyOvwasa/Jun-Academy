@@ -151,13 +151,22 @@ button:hover {
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    row-gap: 1.5rem;
+    row-gap: 1.2rem;
     background-color: #f4f4f4;
     /* background-color: hsla(29, 100%, 90%, 0.5); */
     border: solid 1px #e0e0e0;
     border-radius: 32px;
     padding: 35px 60px;
     box-shadow: -12px -8px 10px hsla(29, 100%, 90%, 0.5);
+}
+
+.cardintro {
+    width: fit-content;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
 }
 
 .date {
@@ -387,6 +396,24 @@ button:hover {
     column-gap: 0.75rem;
 }
 
+.right-footer-container {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    /* Spacing between heading and Coach Lucky link */
+
+    /* Default: Left aligned for desktop */
+    align-items: flex-start;
+}
+
+.right-footer-container h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.2;
+}
+
 .logo-footer-container {
     width: fit-content;
     height: auto;
@@ -471,6 +498,35 @@ button:hover {
     font-size: 1rem;
     font-weight: 600;
     color: green;
+}
+
+.linkedin-container a {
+    display: inline-flex;
+    /* Keeps it as a link but uses flex behavior */
+    align-items: center;
+    /* Vertically centers icon and text */
+    gap: 1px;
+    /* Precise spacing between icon and text */
+    text-decoration: none;
+    color: #0077b5;
+    /* LinkedIn Blue */
+    font-weight: 600;
+    font-size: 1rem;
+    transition: opacity 0.3s ease;
+}
+
+.linkedin-container img {
+    width: 24px;
+    /* Control the icon size here */
+    height: 24px;
+    object-fit: contain;
+    border-radius: 15%;
+}
+
+.linkedin-container a:hover {
+    opacity: 0.8;
+    text-decoration: none;
+    color: #ff7d01;
 }
 
 /* .sitename{
@@ -568,19 +624,38 @@ button:hover {
 
 /* Buttons */
 .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+    /* Slightly reduced padding */
+    border-radius: 999px;
+    font-size: 1.1rem;
+    /* Better base size for mobile & desktop */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Smooth hover transition */
+    text-align: center;
+    width: auto;
+    white-space: nowrap;
+    /* Prevents text from wrapping inside the button */
     background: #ff8c00;
     color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 999px;
-    cursor: pointer;
+    border: 2px solid #ff8c00;
+}
+
+.btn-primary:hover {
+    background: #e67e00;
+    transform: translateY(-2px);
 }
 
 .btn-outline {
     background: transparent;
     border: 2px solid #ff8c00;
     color: #ff8c00;
-    padding: 12px 20px;
+    padding: 1rem 3rem;
     border-radius: 999px;
     cursor: pointer;
     text-decoration: none;
@@ -595,6 +670,129 @@ button:hover {
     background-color: #ff8c00;
     color: white;
 }
+
+.hero-cta-group {
+    display: flex;
+    flex-direction: row;
+    /* Side by side on desktop */
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    /* Center them in the hero section */
+    flex-wrap: wrap;
+    /* Allows stacking if the screen is very narrow */
+}
+
+.modal-actions {
+    display: flex;
+    display: flex;
+    flex-direction: row;
+    /* Side by side on desktop */
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    /* Center them in the hero section */
+    flex-wrap: wrap;
+    /* Allows stacking if the screen is very narrow */
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+    /* Slightly reduced padding */
+    border-radius: 999px;
+    font-size: 1.1rem;
+    /* Better base size for mobile & desktop */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Smooth hover transition */
+    text-align: center;
+    width: auto;
+    white-space: nowrap;
+    /* Prevents text from wrapping inside the button */
+    background: transparent;
+    border: 2px solid #ff8c00;
+    color: #ff8c00;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 140, 0, 0.05);
+    /* Subtle highlight */
+    transform: translateY(-2px);
+}
+
+.faq {
+    padding: 80px;
+    background: #fff;
+    border-top: 1px solid #eee;
+}
+
+.faq-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.faq-sub {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 26px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-item {
+    border: 1px solid #ffd8b5;
+    border-radius: 18px;
+    padding: 14px 16px;
+    background: linear-gradient(120deg, #fff6ef 0%, #ffffff 70%);
+}
+
+.faq-item summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: #222;
+    list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: "+";
+    float: right;
+    font-size: 1.2rem;
+    color: #ff6b00;
+    font-weight: 900;
+}
+
+.faq-item[open] summary::after {
+    content: "–";
+}
+
+.faq-item p {
+    margin-top: 10px;
+    color: #444;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+
 
 /* Animation */
 @keyframes slideUp {
@@ -691,6 +889,26 @@ button:hover {
     font-size: 20px;
 }
 
+.copy-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #333;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 2000;
+}
+
+.copy-toast.show {
+    opacity: 1;
+}
+
+
 /* Support Box */
 .support-box {
     background-color: #F5F5F5;
@@ -746,6 +964,149 @@ button:hover {
     width: 100%;
 }
 
+.how-it-works {
+    padding: 80px 80px 150px 80px;
+    background: linear-gradient(120deg, #fff6ef 30%, #ffffff 70%);
+    /* border-top: 1px solid #eee; */
+}
+
+.how-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.how-it-works h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.how-sub {
+    color: #555;
+    line-height: 1.6;
+    max-width: 700px;
+    margin-bottom: 30px;
+}
+
+.how-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.how-card {
+    flex: 1;
+    min-width: 260px;
+    border: 1px solid #ffd8b5;
+    border-radius: 22px;
+    padding: 24px;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect */
+.how-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Number styling */
+.how-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.15rem;
+    color: #ff6b00;
+    /* orange accent */
+    font-weight: 700;
+}
+
+.how-card p {
+    color: #444;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Decorative left bar */
+.how-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 6px;
+    background: #ff6b00;
+    opacity: 0.9;
+}
+
+.slots-note {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.founding-badge {
+    display: inline-block;
+    background: white;
+    border: 1px solid #ffd8b5;
+    color: #ff6b00;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    border-radius: 999px;
+}
+
+.founding-note {
+    margin-top: 10px;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+
+.final-cta {
+    padding: 80px;
+    background: linear-gradient(120deg, #fff6ef 0%, #ffffff 70%);
+    border-top: 1px solid #eee;
+}
+
+.final-cta-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 1px solid #ffd8b5;
+    border-radius: 28px;
+    padding: 34px;
+    background: #fff;
+    text-align: center;
+}
+
+.final-cta-wrap h2 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 12px;
+}
+
+.final-cta-wrap p {
+    color: #555;
+    line-height: 1.7;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.final-cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 22px;
+}
+
+.final-cta-note {
+    margin-top: 14px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
 /* Responsive Styles for Modal */
 @media (max-width: 768px) {
     .payment-content {
@@ -760,6 +1121,10 @@ button:hover {
         height: auto;
         max-height: 90vh;
         overflow-y: auto;
+    }
+
+    .faq {
+        padding: 40px 20px;
     }
 }
 
@@ -850,6 +1215,9 @@ button:hover {
     }
 }
 
+/* responsive */
+
+
 /* Tablet (max-width: 768px) */
 @media (max-width: 768px) {
     .header {
@@ -903,6 +1271,10 @@ button:hover {
         padding: 40px 20px;
     }
 
+    .how-it-works {
+        padding: 40px 20px;
+    }
+
     /* Fix for footer wrapping */
     .wholecontainer {
         flex-direction: column;
@@ -914,120 +1286,173 @@ button:hover {
         width: 100%;
         justify-content: flex-start;
     }
-}
 
-/* Mobile (max-width: 480px) */
-@media (max-width: 480px) {
-    .header {
-        padding: 15px;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .right-container {
-        justify-content: center;
-    }
-
-    .logo-container img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .sitename {
-        font-size: 1.2rem;
-    }
-
-    .right-hero-container h1 {
-        font-size: 2rem;
-        line-height: 2.5rem;
-    }
-
-    .hero {
-        padding: 30px 15px;
-    }
-
-    .left-hero-container {
-        padding: 25px 20px;
-    }
-
-    .benefit-container p {
-        font-size: 0.9rem;
-    }
-
-    .price {
-        font-size: 1.8rem;
-    }
-
-    /* Testimonials */
-    .testimonials {
-        padding: 40px 15px;
-    }
-
-    .testimonials-container h1,
-    .hear-container h1 {
-        text-align: center;
-    }
-
-    .hear-container h1 {
-        font-size: 1.5rem;
-    }
-
-    .real-container {
-        width: 100%;
-        display: block;
-        /* Ensure it takes full width */
-    }
-
-    .top-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .profile-container {
-        width: 100%;
-        margin-bottom: 1.5rem;
-    }
-
-    .second-proflie-container {
-        transform: none;
-        margin-top: 0;
-        box-shadow: none;
-        /* Reset shadow rotation effect if needed, or keep normal shadow */
-        border: solid 1px #e0e0e0;
-        /* Match others */
-    }
-
-    /* Footer */
-    .footer {
-        flex-direction: column;
-        align-items: flex-start;
+    .final-cta {
         padding: 40px 20px;
     }
 
-    .wholecontainer {
+    .final-cta-wrap {
+        padding: 26px;
+        text-align: left;
+    }
+
+    .final-cta-buttons {
+        justify-content: flex-start;
+    }
+
+    .hero-cta-group {
         flex-direction: column;
-        gap: 2rem;
-    }
-
-    .join,
-    .empower {
-        font-size: 1rem;
-    }
-
-    button {
+        /* Stack buttons vertically */
         width: 100%;
-        padding: 1rem 2rem;
+        padding: 0 1rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        /* Full width buttons on mobile for easier tapping */
+        font-size: 1rem;
+        padding: 0.8rem 2rem;
+    }
+
+    .right-footer-container {
+        /* Center everything on mobile for a better "vibe" */
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        margin-top: 20px;
+        /* Space it out from content above */
+    }
+
+    .right-footer-container h3 {
         font-size: 1.1rem;
+        /* Slightly smaller on mobile */
     }
 
-    /* Ensure modal overlays and modals work on mobile */
-    .modal {
-        width: 95%;
-        padding: 16px;
-    }
+    /* Mobile (max-width: 480px) */
+    @media (max-width: 480px) {
+        .header {
+            padding: 15px;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
 
-    .modal-header h2 {
-        font-size: 1.2rem;
+        .right-container {
+            justify-content: center;
+        }
+
+        .logo-container img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .sitename {
+            font-size: 1.2rem;
+        }
+
+        .right-hero-container h1 {
+            font-size: 2rem;
+            line-height: 2.5rem;
+        }
+
+        .hero {
+            padding: 30px 15px;
+        }
+
+        .left-hero-container {
+            padding: 25px 20px;
+        }
+
+        .benefit-container p {
+            font-size: 0.9rem;
+        }
+
+        .price {
+            font-size: 1.8rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 40px 15px;
+        }
+
+        .testimonials-container h1,
+        .hear-container h1 {
+            text-align: center;
+        }
+
+        .hear-container h1 {
+            font-size: 1.5rem;
+        }
+
+        .real-container {
+            width: 100%;
+            display: block;
+            /* Ensure it takes full width */
+        }
+
+        .top-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-container {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .second-proflie-container {
+            transform: none;
+            margin-top: 0;
+            box-shadow: none;
+            /* Reset shadow rotation effect if needed, or keep normal shadow */
+            border: solid 1px #e0e0e0;
+            /* Match others */
+        }
+
+        /* Footer */
+        .footer {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 40px 20px;
+        }
+
+        .wholecontainer {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .join,
+        .empower {
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Ensure modal overlays and modals work on mobile */
+        .modal {
+            width: 95%;
+            padding: 16px;
+        }
+
+        .modal-header h2 {
+            font-size: 1.2rem;
+        }
+
+        .how-it-works {
+            padding: 40px 15px;
+        }
+
+        .faq {
+            padding: 40px 15px;
+        }
+
+        .final-cta {
+            padding: 40px 15px;
+        }
     }
-}
