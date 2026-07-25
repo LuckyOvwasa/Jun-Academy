@@ -8,22 +8,33 @@
     scroll-behavior: smooth;
 }
 
+body {
+    background-color: #0b0f19;
+    color: #e2e8f0;
+    overflow-x: hidden;
+}
+
+/* Header */
 .header {
     width: 100%;
     height: auto;
-    background-color: white;
-    color: black;
+    background-color: rgba(11, 15, 25, 0.95);
+    color: #ffffff;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 80px;
-    border-bottom: solid 1px #e0e0e0;
+    padding: 22px 80px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
 }
 
 .header a {
     text-decoration: none;
-    color: black;
+    color: #ffffff;
 }
 
 .right-container {
@@ -42,7 +53,13 @@
     flex-direction: row;
     justify-content: start;
     align-items: center;
-    column-gap: 0.5rem;
+    column-gap: 0.75rem;
+}
+
+.sitename {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
 }
 
 img {
@@ -68,8 +85,16 @@ img {
     background-color: #ff7d01;
     padding: 5px;
     border-radius: 50px;
+    box-shadow: 0 0 10px rgba(255, 125, 1, 0.4);
 }
 
+.left-container p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #cbd5e1;
+}
+
+/* Benefit Container */
 .benefit-container {
     width: fit-content;
     height: auto;
@@ -77,28 +102,36 @@ img {
     flex-direction: row;
     justify-content: start;
     align-items: center;
-    column-gap: 0.5rem;
+    column-gap: 0.6rem;
 }
 
 .benefit-container span {
     font-size: 0.9rem;
     font-weight: 500;
     color: #ff7d01;
-    border: 1px solid #ff7d01;
+    border: 1px solid rgba(255, 125, 1, 0.4);
+    background: rgba(255, 125, 1, 0.12);
     padding: 5px;
     border-radius: 50px;
 }
 
+.benefit-container p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+/* Hero Section */
 .hero {
     width: 100%;
     height: auto;
-
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: start;
     padding: 80px;
-
+    background: radial-gradient(ellipse at 80% 20%, rgba(255, 125, 1, 0.12) 0%, rgba(11, 15, 25, 0) 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(255, 125, 1, 0.08) 0%, rgba(11, 15, 25, 0) 60%),
+        #0b0f19;
 }
 
 .right-hero-container {
@@ -114,13 +147,17 @@ img {
 .right-hero-container h1 {
     font-size: 3rem;
     line-height: 3.8rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .right-hero-container p {
-    font-size: 1rem;
+    font-size: 1.05rem;
     line-height: 1.8rem;
+    color: #94a3b8;
 }
-
 
 button {
     width: fit-content;
@@ -137,10 +174,10 @@ button {
     justify-content: center;
     align-items: start;
     column-gap: 10px;
+    transition: all 0.3s ease;
 }
 
 button:hover {
-    /* background-color: #e76c00; */
     background-color: #ae5802;
 }
 
@@ -152,12 +189,12 @@ button:hover {
     justify-content: start;
     align-items: start;
     row-gap: 1.2rem;
-    background-color: #f4f4f4;
-    /* background-color: hsla(29, 100%, 90%, 0.5); */
-    border: solid 1px #e0e0e0;
+    background: rgba(18, 25, 40, 0.85);
+    border: solid 1px rgba(255, 125, 1, 0.25);
     border-radius: 32px;
     padding: 35px 60px;
-    box-shadow: -12px -8px 10px hsla(29, 100%, 90%, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
 }
 
 .cardintro {
@@ -171,21 +208,23 @@ button:hover {
 
 .date {
     font-weight: 700;
-    color: #101010;
+    color: #ffffff;
     font-size: 1rem;
 }
 
 .price {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 800;
+    color: #ffffff;
 }
 
+/* Testimonials Section */
 .testimonials {
     width: 100%;
     height: auto;
-    background-color: hsla(29, 100%, 90%, 0.5);
-    color: #101010;
-    padding: 25px 80px 80px 80px;
+    background: linear-gradient(180deg, #0e1422 0%, #0b0f19 100%);
+    color: #e2e8f0;
+    padding: 60px 80px 90px 80px;
 }
 
 .general {
@@ -195,7 +234,7 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: 2rem;
+    row-gap: 2.5rem;
 }
 
 .upper-container {
@@ -206,21 +245,23 @@ button:hover {
     justify-content: center;
     align-items: center;
     row-gap: 1rem;
-    ;
 }
 
 .testimonials-container {
     width: fit-content;
     height: auto;
-    background-color: white;
-    padding: 5px 10px;
-    border: solid 1px #e0e0e0;
+    background: rgba(255, 125, 1, 0.12);
+    padding: 6px 16px;
+    border: solid 1px rgba(255, 125, 1, 0.3);
     border-radius: 50px;
 }
 
 .testimonials-container h1 {
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ff8c00;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .hear-container {
@@ -229,8 +270,9 @@ button:hover {
 }
 
 .hear-container h1 {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
 }
 
 .other-text-container {
@@ -247,13 +289,13 @@ button:hover {
     width: 80%;
     height: auto;
     display: flex;
-
 }
 
 .real-container p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     text-align: center;
-    line-height: 1.5rem;
+    line-height: 1.6rem;
+    color: #94a3b8;
 }
 
 .bottom-container {
@@ -276,36 +318,39 @@ button:hover {
 }
 
 .profile-container {
-    width: 25%;
+    width: 31%;
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: 0.1rem;
-    padding: 25px 20px;
-    background-color: white;
-    border: solid 1px #e0e0e0;
+    row-gap: 0.4rem;
+    padding: 28px 24px;
+    background: rgba(18, 25, 40, 0.85);
+    border: solid 1px rgba(255, 255, 255, 0.08);
     border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
+.profile-container:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 140, 0, 0.4);
+}
 
 .second-proflie-container {
-
-    transform: rotate(4.44deg);
-
-    box-shadow:
-        0 0 10px 3px rgba(0, 0, 0, 0.08),
-        0 8px 24px 4px rgba(0, 0, 0, 0.12);
+    transform: rotate(2deg);
+    border-color: rgba(255, 140, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(255, 125, 1, 0.15);
 }
-
-
 
 .image {
     width: 90px;
     height: 90px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid #ff7d01;
 }
 
 .image img {
@@ -326,53 +371,55 @@ button:hover {
 }
 
 .name-container h2 {
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
 }
 
 .designation {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: hsla(0, 0%, 23%, 0.6);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #ff9826;
     margin-bottom: 12px;
 }
 
 .quote {
-
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     text-align: center;
-    line-height: 1.5rem;
-    color: #3a3a3a;
+    line-height: 1.6rem;
+    color: #cbd5e1;
 }
 
 .quote-icon-container {
     margin-top: 20px;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    border: 1px solid #c7c7c7;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: transparent;
+    background-color: rgba(255, 125, 1, 0.08);
 }
 
 .quote-icon-container .material-icons {
-    font-size: 30px;
-    color: #555555;
+    font-size: 26px;
+    color: #ff7d01;
     transform: rotate(180deg);
 }
 
+/* Footer */
 .footer {
     width: 100%;
     height: auto;
-    background-color: white;
-    color: #010101;
+    background-color: #070a11;
+    color: #e2e8f0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 60px 80px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .business-socials {
@@ -386,7 +433,7 @@ button:hover {
     font-size: 0.9rem;
     font-weight: 600;
     margin: 0;
-    color: #333;
+    color: #cbd5e1;
 }
 
 .social-icons {
@@ -397,13 +444,11 @@ button:hover {
 
 .social-icons a {
     color: #ff7d01;
-    /* Neutral grey for icons */
     transition: transform 0.3s ease, color 0.3s ease;
     display: flex;
     align-items: center;
 }
 
-/* Hover Effects */
 .social-icons a:hover {
     transform: translateY(-3px);
 }
@@ -427,8 +472,8 @@ button:hover {
 .wholecontainer {
     width: 100%;
     height: auto;
-    background-color: white;
-    color: #010101;
+    background-color: #070a11;
+    color: #e2e8f0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -443,23 +488,14 @@ button:hover {
     justify-content: start;
     align-items: center;
     column-gap: 0.75rem;
-}
-
-.right-footer-container {
-    display: flex;
-    flex-direction: row;
     gap: 12px;
-    /* Spacing between heading and Coach Lucky link */
-
-    /* Default: Left aligned for desktop */
-    align-items: flex-start;
 }
 
 .right-footer-container h3 {
     margin: 0;
     font-size: 1.2rem;
     font-weight: 700;
-    color: #333;
+    color: #ffffff;
     line-height: 1.2;
 }
 
@@ -473,6 +509,11 @@ button:hover {
     column-gap: 0.5rem;
 }
 
+.logo-footer-container h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
 .call-container {
     width: fit-content;
     height: auto;
@@ -484,8 +525,9 @@ button:hover {
 }
 
 .empower {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 400;
+    color: #94a3b8;
 }
 
 .calling {
@@ -529,12 +571,13 @@ button:hover {
 .left-footer-container h4 {
     font-size: 1rem;
     font-weight: 700;
-    color: Green;
+    color: #10b981;
 }
 
 .join {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
+    color: #cbd5e1;
 }
 
 .dot {
@@ -546,100 +589,82 @@ button:hover {
 .phone-number {
     font-size: 1rem;
     font-weight: 600;
-    color: green;
+    color: #10b981;
 }
 
 .linkedin-container a {
     display: inline-flex;
-    /* Keeps it as a link but uses flex behavior */
     align-items: center;
-    /* Vertically centers icon and text */
-    gap: 1px;
-    /* Precise spacing between icon and text */
+    gap: 6px;
     text-decoration: none;
-    color: #0077b5;
-    /* LinkedIn Blue */
+    color: #38bdf8;
     font-weight: 600;
     font-size: 1rem;
     transition: opacity 0.3s ease;
 }
 
-.linkedin-container img {
-    width: 24px;
-    /* Control the icon size here */
-    height: 24px;
-    object-fit: contain;
-    border-radius: 15%;
-}
-
 .linkedin-container a:hover {
     opacity: 0.8;
-    text-decoration: none;
     color: #ff7d01;
 }
-
-/* .sitename{
-    font-size: 1.5rem;
-    font-weight: 600;
-} */
 
 .left-container p {
     font-size: 0.9rem;
     font-weight: 600;
 }
 
-/* Overlay */
+/* Modals */
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(3, 7, 18, 0.8);
     display: none;
-    /* hidden by default */
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    backdrop-filter: blur(10px);
 }
 
-/* Show modal */
 .modal-overlay.active {
     display: flex !important;
 }
 
-/* Modal box */
 .modal {
-    background: #fff;
+    background: #111827;
+    border: 1px solid rgba(255, 125, 1, 0.25);
+    color: #f3f4f6;
     width: 90%;
     max-width: 700px;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
     animation: slideUp 0.3s ease;
 }
 
-/* Header */
 .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Close button */
+.modal-header h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
 .close-btn {
     background: none;
     border: none;
     font-size: 28px;
     cursor: pointer;
-    color: #333;
-    /* Make visible on white background */
+    color: #9ca3af;
     transition: all 0.3s ease;
 }
 
 .close-btn:hover {
-    color: white;
-    /* Make white on orange background */
+    color: #ffffff;
 }
 
-/* Content */
 .features {
     list-style: none;
     padding: 0;
@@ -648,30 +673,37 @@ button:hover {
 
 .features li {
     margin-bottom: 10px;
+    color: #d1d5db;
 }
 
-/* Info box */
 .info-box {
-    background: #fff3e6;
-    padding: 16px;
-    border-radius: 12px;
+    background: rgba(255, 125, 1, 0.08);
+    border: 1px solid rgba(255, 125, 1, 0.25);
+    padding: 18px;
+    border-radius: 14px;
     margin-top: 16px;
+    color: #f3f4f6;
+}
+
+.info-box p {
+    color: #cbd5e1;
 }
 
 .price {
     font-size: 32px;
     font-weight: bold;
     margin-top: 12px;
+    color: #ffffff;
 }
 
 .modal-alt-note {
     margin-top: 14px;
     font-size: 0.88rem;
-    color: #777;
+    color: #9ca3af;
     line-height: 1.5;
     padding: 10px 14px;
-    background: #f9f9f9;
-    border-left: 3px solid #ff8c00;
+    background: rgba(255, 255, 255, 0.04);
+    border-left: 3px solid #ff7d01;
     border-radius: 6px;
 }
 
@@ -679,11 +711,12 @@ button:hover {
     color: #ff8c00;
 }
 
-/* Actions */
 .modal-actions {
     display: flex;
     justify-content: space-between;
     margin-top: 24px;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 /* Buttons */
@@ -693,26 +726,24 @@ button:hover {
     justify-content: center;
     gap: 0.5rem;
     padding: 1rem 2.5rem;
-    /* Slightly reduced padding */
     border-radius: 999px;
     font-size: 1.1rem;
-    /* Better base size for mobile & desktop */
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    /* Smooth hover transition */
     text-align: center;
     width: auto;
     white-space: nowrap;
-    /* Prevents text from wrapping inside the button */
-    background: #ff8c00;
+    background: linear-gradient(135deg, #ff7d01 0%, #e66a00 100%);
     color: white;
-    border: 2px solid #ff8c00;
+    border: none;
+    box-shadow: 0 4px 20px rgba(255, 125, 1, 0.35);
 }
 
 .btn-primary:hover {
-    background: #e67e00;
+    background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
     transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 125, 1, 0.5);
 }
 
 .btn-outline {
@@ -738,26 +769,10 @@ button:hover {
 .hero-cta-group {
     display: flex;
     flex-direction: row;
-    /* Side by side on desktop */
     gap: 1rem;
     align-items: center;
     justify-content: center;
-    /* Center them in the hero section */
     flex-wrap: wrap;
-    /* Allows stacking if the screen is very narrow */
-}
-
-.modal-actions {
-    display: flex;
-    display: flex;
-    flex-direction: row;
-    /* Side by side on desktop */
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    /* Center them in the hero section */
-    flex-wrap: wrap;
-    /* Allows stacking if the screen is very narrow */
 }
 
 .btn-secondary {
@@ -766,34 +781,31 @@ button:hover {
     justify-content: center;
     gap: 0.5rem;
     padding: 1rem 2.5rem;
-    /* Slightly reduced padding */
     border-radius: 999px;
     font-size: 1.1rem;
-    /* Better base size for mobile & desktop */
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    /* Smooth hover transition */
     text-align: center;
     width: auto;
     white-space: nowrap;
-    /* Prevents text from wrapping inside the button */
-    background: transparent;
+    background: rgba(255, 255, 255, 0.04);
     border: 2px solid #ff8c00;
     color: #ff8c00;
     text-decoration: none;
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 140, 0, 0.05);
-    /* Subtle highlight */
+    background: rgba(255, 140, 0, 0.15);
+    color: #ffffff;
     transform: translateY(-2px);
 }
 
+/* FAQ Section */
 .faq {
     padding: 80px;
-    background: #fff;
-    border-top: 1px solid #eee;
+    background: #0e1422;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .faq-wrap {
@@ -802,13 +814,13 @@ button:hover {
 }
 
 .faq h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 10px;
-    color: #222;
+    color: #ffffff;
 }
 
 .faq-sub {
-    color: #555;
+    color: #94a3b8;
     line-height: 1.6;
     margin-bottom: 26px;
 }
@@ -820,16 +832,17 @@ button:hover {
 }
 
 .faq-item {
-    border: 1px solid #ffd8b5;
+    border: 1px solid rgba(255, 140, 0, 0.25);
     border-radius: 18px;
-    padding: 14px 16px;
-    background: linear-gradient(120deg, #fff6ef 0%, #ffffff 70%);
+    padding: 16px 20px;
+    background: rgba(18, 25, 40, 0.7);
+    backdrop-filter: blur(10px);
 }
 
 .faq-item summary {
     cursor: pointer;
     font-weight: 700;
-    color: #222;
+    color: #ffffff;
     list-style: none;
 }
 
@@ -851,12 +864,10 @@ button:hover {
 
 .faq-item p {
     margin-top: 10px;
-    color: #444;
+    color: #cbd5e1;
     line-height: 1.6;
     font-size: 0.95rem;
 }
-
-
 
 /* Animation */
 @keyframes slideUp {
@@ -874,13 +885,12 @@ button:hover {
 /* Payment Modal Specifics */
 .payment-modal {
     max-width: 900px;
-    /* Wider for 2-column layout */
     width: 95%;
 }
 
 .modal-subtitle {
     font-size: 0.95rem;
-    color: #555;
+    color: #9ca3af;
     margin-bottom: 24px;
     line-height: 1.5;
 }
@@ -898,7 +908,8 @@ button:hover {
 
 /* Account Card (Left Column) */
 .account-card {
-    background-color: #FFF3E6;
+    background-color: rgba(255, 125, 1, 0.08);
+    border: 1px solid rgba(255, 125, 1, 0.25);
     padding: 24px;
     border-radius: 16px;
     margin-bottom: 20px;
@@ -912,7 +923,7 @@ button:hover {
 
 .detail-group label {
     font-size: 0.9rem;
-    color: #666;
+    color: #9ca3af;
     display: block;
     margin-bottom: 4px;
 }
@@ -920,7 +931,7 @@ button:hover {
 .detail-group p {
     font-weight: 700;
     font-size: 1.1rem;
-    color: #333;
+    color: #ffffff;
 }
 
 .amount-tag {
@@ -937,18 +948,17 @@ button:hover {
 }
 
 .amount-tag.alt {
-    background: rgba(255, 140, 0, 0.12);
-    color: #d97706;
-    border: 1px solid rgba(255, 140, 0, 0.25);
+    background: rgba(255, 140, 0, 0.15);
+    color: #ff9826;
+    border: 1px solid rgba(255, 140, 0, 0.3);
 }
 
 .alt-amount-text {
     font-size: 0.88rem !important;
     font-weight: 500 !important;
-    color: #666 !important;
+    color: #9ca3af !important;
     margin-top: 4px;
 }
-
 
 .copy-row {
     display: flex;
@@ -963,20 +973,19 @@ button:hover {
 }
 
 .warning-box {
-    background: white;
-    padding: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 12px 16px;
     border-radius: 50px;
-    /* Pill shape */
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 0.85rem;
-    color: #555;
+    color: #d1d5db;
     margin-top: 20px;
 }
 
 .warning-box .material-icons {
-    color: #333;
+    color: #ff8c00;
     font-size: 20px;
 }
 
@@ -984,7 +993,7 @@ button:hover {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #333;
+    background: #ff7d01;
     color: #fff;
     padding: 10px 14px;
     border-radius: 8px;
@@ -999,15 +1008,19 @@ button:hover {
     opacity: 1;
 }
 
-
 /* Support Box */
 .support-box {
-    background-color: #F5F5F5;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 20px;
     border-radius: 16px;
     font-size: 0.9rem;
-    color: #555;
+    color: #9ca3af;
     line-height: 1.5;
+}
+
+.support-box strong {
+    color: #f3f4f6;
 }
 
 /* Form Column (Right Column) */
@@ -1015,11 +1028,12 @@ button:hover {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 8px;
+    color: #ffffff;
 }
 
 .form-subtitle {
     font-size: 0.95rem;
-    color: #333;
+    color: #9ca3af;
     margin-bottom: 20px;
     font-weight: 500;
 }
@@ -1033,13 +1047,15 @@ button:hover {
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #333;
+    color: #d1d5db;
 }
 
 .form-group input {
     width: 100%;
     padding: 12px 16px;
-    border: 1px solid #e0e0e0;
+    background: #1f2937;
+    border: 1px solid #374151;
+    color: #ffffff;
     border-radius: 8px;
     font-size: 1rem;
     font-family: inherit;
@@ -1048,17 +1064,16 @@ button:hover {
 .form-group input:focus {
     outline: none;
     border-color: #ff8c00;
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.2);
 }
 
-/* Full Width Button */
 .full-width {
     width: 100%;
 }
 
 .how-it-works {
     padding: 80px 80px 150px 80px;
-    background: linear-gradient(120deg, #fff6ef 30%, #ffffff 70%);
-    /* border-top: 1px solid #eee; */
+    background: #0b0f19;
 }
 
 .how-wrap {
@@ -1067,13 +1082,13 @@ button:hover {
 }
 
 .how-it-works h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 10px;
-    color: #222;
+    color: #ffffff;
 }
 
 .how-sub {
-    color: #555;
+    color: #94a3b8;
     line-height: 1.6;
     max-width: 700px;
     margin-bottom: 30px;
@@ -1088,37 +1103,35 @@ button:hover {
 .how-card {
     flex: 1;
     min-width: 260px;
-    border: 1px solid #ffd8b5;
+    border: 1px solid rgba(255, 140, 0, 0.2);
     border-radius: 22px;
     padding: 24px;
-    background: #ffffff;
+    background: rgba(18, 25, 40, 0.75);
+    backdrop-filter: blur(12px);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
-/* Hover effect */
 .how-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 25px rgba(255, 140, 0, 0.15);
+    border-color: rgba(255, 140, 0, 0.4);
 }
 
-/* Number styling */
 .how-card h3 {
     margin-bottom: 10px;
     font-size: 1.15rem;
-    color: #ff6b00;
-    /* orange accent */
+    color: #ff7d01;
     font-weight: 700;
 }
 
 .how-card p {
-    color: #444;
+    color: #cbd5e1;
     line-height: 1.6;
     font-size: 0.95rem;
 }
 
-/* Decorative left bar */
 .how-card::before {
     content: "";
     position: absolute;
@@ -1133,21 +1146,21 @@ button:hover {
 .slots-note {
     margin-top: 10px;
     font-size: 0.9rem;
-    color: #444;
+    color: #94a3b8;
 }
 
 .founding-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: white;
-    border: 1px solid #ffd8b5;
-    color: #ff6b00;
+    background: rgba(255, 125, 1, 0.1);
+    border: 1px solid rgba(255, 125, 1, 0.3);
+    color: #ff8c00;
     font-weight: 700;
     font-size: 0.85rem;
     padding: 6px 14px;
     border-radius: 999px;
-    box-shadow: 0 2px 8px rgba(255, 107, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(255, 107, 0, 0.12);
 }
 
 .pulse-dot {
@@ -1166,10 +1179,12 @@ button:hover {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
     }
+
     70% {
         transform: scale(1.15);
         box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
     }
+
     100% {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
@@ -1178,7 +1193,7 @@ button:hover {
 
 .urgency-blink {
     font-weight: 800;
-    color: #e67e00;
+    color: #ff9826;
     animation: textBlink 1.4s infinite alternate ease-in-out;
 }
 
@@ -1194,10 +1209,12 @@ button:hover {
         color: #ff7d01;
         text-shadow: 0 0 1px rgba(255, 125, 1, 0.3);
     }
+
     50% {
         opacity: 0.45;
-        color: #e65100;
+        color: #ff9826;
     }
+
     100% {
         opacity: 1;
         color: #ff7d01;
@@ -1205,10 +1222,9 @@ button:hover {
     }
 }
 
-
 .founding-note {
     margin-top: 10px;
-    color: #555;
+    color: #94a3b8;
     font-size: 0.95rem;
     line-height: 1.5;
 }
@@ -1229,13 +1245,13 @@ button:hover {
 .option-divider .divider-line {
     flex: 1;
     height: 1px;
-    background: linear-gradient(to right, transparent, #d4d4d4, transparent);
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
 }
 
 .option-divider .divider-text {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #999;
+    color: #64748b;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     background: transparent;
@@ -1243,8 +1259,8 @@ button:hover {
 }
 
 .self-paced-card {
-    background: #ffffff;
-    border: 1.5px dashed #ffd0a0;
+    background: rgba(15, 22, 35, 0.9);
+    border: 1.5px dashed rgba(255, 140, 0, 0.4);
     border-radius: 18px;
     padding: 22px 24px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -1252,7 +1268,7 @@ button:hover {
 
 .self-paced-card:hover {
     border-color: #ff8c00;
-    box-shadow: 0 4px 18px rgba(255, 140, 0, 0.1);
+    box-shadow: 0 4px 18px rgba(255, 140, 0, 0.15);
 }
 
 .self-paced-top {
@@ -1270,8 +1286,8 @@ button:hover {
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #ff8c00;
-    background: rgba(255, 140, 0, 0.1);
-    border: 1px solid rgba(255, 140, 0, 0.2);
+    background: rgba(255, 140, 0, 0.12);
+    border: 1px solid rgba(255, 140, 0, 0.25);
     padding: 5px 12px;
     border-radius: 999px;
 }
@@ -1279,14 +1295,14 @@ button:hover {
 .self-paced-price {
     font-size: 1.6rem;
     font-weight: 800;
-    color: #111;
+    color: #ffffff;
     margin: 0;
 }
 
 .self-paced-desc {
     font-size: 0.9rem;
     line-height: 1.55;
-    color: #666;
+    color: #94a3b8;
     margin: 0 0 14px;
 }
 
@@ -1303,11 +1319,11 @@ button:hover {
     gap: 6px;
     font-size: 0.85rem;
     font-weight: 500;
-    color: #444;
-    background: #f8f8f8;
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.04);
     padding: 6px 12px;
     border-radius: 999px;
-    border: 1px solid #eee;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .self-paced-perk .material-icons {
@@ -1331,9 +1347,9 @@ button:hover {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.04);
     color: #ff8c00;
-    border: 2px solid #ffd0a0;
+    border: 2px solid rgba(255, 140, 0, 0.4);
 }
 
 .btn-self-paced:hover {
@@ -1351,30 +1367,32 @@ button:hover {
 .btn-self-paced:hover .material-symbols-outlined {
     transform: translateX(3px);
 }
+
 .final-cta {
     padding: 80px;
-    background: linear-gradient(120deg, #fff6ef 0%, #ffffff 70%);
-    border-top: 1px solid #eee;
+    background: #0b0f19;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .final-cta-wrap {
     max-width: 1000px;
     margin: 0 auto;
-    border: 1px solid #ffd8b5;
+    border: 1px solid rgba(255, 140, 0, 0.3);
     border-radius: 28px;
-    padding: 34px;
-    background: #fff;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(255, 125, 1, 0.1) 0%, rgba(18, 25, 40, 0.95) 100%);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
 .final-cta-wrap h2 {
-    font-size: 2rem;
-    color: #222;
+    font-size: 2.2rem;
+    color: #ffffff;
     margin-bottom: 12px;
 }
 
 .final-cta-wrap p {
-    color: #555;
+    color: #cbd5e1;
     line-height: 1.7;
     max-width: 760px;
     margin: 0 auto;
@@ -1391,28 +1409,7 @@ button:hover {
 .final-cta-note {
     margin-top: 14px;
     font-size: 0.95rem;
-    color: #444;
-}
-
-/* Responsive Styles for Modal */
-@media (max-width: 768px) {
-    .payment-content {
-        flex-direction: column;
-        gap: 24px;
-    }
-
-    .payment-modal {
-        padding: 20px;
-        margin: 20px 0;
-        /* Add scroll space */
-        height: auto;
-        max-height: 90vh;
-        overflow-y: auto;
-    }
-
-    .faq {
-        padding: 40px 20px;
-    }
+    color: #94a3b8;
 }
 
 /* Success Modal Specifics */
@@ -1420,10 +1417,8 @@ button:hover {
     max-width: 500px;
     text-align: center;
     padding: 40px;
-    background-color: white;
-    /* Explicitly set background */
-    color: #333;
-    /* Explicitly set text color */
+    background-color: #111827;
+    color: #ffffff;
 }
 
 .header-right {
@@ -1436,7 +1431,11 @@ button:hover {
     gap: 5px;
     font-size: 1rem;
     font-weight: 600;
-    color: #333;
+    color: #9ca3af;
+}
+
+.success-close-btn:hover {
+    color: #ffffff;
 }
 
 .success-close-btn .material-icons {
@@ -1461,50 +1460,28 @@ button:hover {
 
 .success-content h2 {
     font-size: 1.8rem;
-    color: #000;
-    /* Ensure title is black */
+    color: #ffffff;
     font-weight: 700;
     margin-bottom: 16px;
-    color: #000;
 }
 
 .success-content p {
     font-size: 1rem;
     line-height: 1.6;
-    color: #555;
+    color: #9ca3af;
     max-width: 400px;
 }
 
+/* Curriculum Section */
 .curriculum-section {
-    background: #ffffff;
+    background: #0e1422;
     padding: 90px 20px;
     position: relative;
     overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.curriculum-section::before {
-    content: "";
-    position: absolute;
-    top: -120px;
-    right: -120px;
-    width: 420px;
-    height: 420px;
-    background: radial-gradient(circle, rgba(255, 140, 0, 0.14) 0%, rgba(255, 140, 0, 0) 70%);
-    pointer-events: none;
-    z-index: 0;
-}
 
-.curriculum-section::after {
-    content: "";
-    position: absolute;
-    bottom: -140px;
-    left: -100px;
-    width: 360px;
-    height: 360px;
-    background: radial-gradient(circle, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0) 70%);
-    pointer-events: none;
-    z-index: 0;
-}
 
 .curriculum-container {
     max-width: 1200px;
@@ -1534,7 +1511,7 @@ button:hover {
     margin: 0 0 12px;
     line-height: 1.15;
     letter-spacing: -0.02em;
-    color: #111111;
+    color: #ffffff;
 }
 
 .curriculum-accent-line {
@@ -1549,7 +1526,11 @@ button:hover {
     margin: 0;
     font-size: 1.08rem;
     line-height: 1.8;
-    color: #5f6470;
+    color: #94a3b8;
+}
+
+.curriculum-header strong {
+    color: #ffffff;
 }
 
 .curriculum-top {
@@ -1562,11 +1543,11 @@ button:hover {
 .curriculum-intro-card,
 .curriculum-meta-card,
 .curriculum-card {
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(18, 25, 40, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(15, 23, 51, 0.06);
-    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
 }
 
 .curriculum-intro-card {
@@ -1576,13 +1557,13 @@ button:hover {
 .curriculum-intro-card h3 {
     margin: 0 0 12px;
     font-size: 1.35rem;
-    color: #111111;
+    color: #ffffff;
 }
 
 .curriculum-intro-card p {
     margin: 0 0 20px;
     line-height: 1.75;
-    color: #5f6470;
+    color: #94a3b8;
 }
 
 .curriculum-tools {
@@ -1596,9 +1577,9 @@ button:hover {
     align-items: center;
     padding: 9px 14px;
     border-radius: 999px;
-    background: rgba(255, 140, 0, 0.1);
-    color: #ff8c00;
-    border: 1px solid rgba(255, 140, 0, 0.16);
+    background: rgba(255, 140, 0, 0.12);
+    color: #ff9826;
+    border: 1px solid rgba(255, 140, 0, 0.25);
     font-size: 0.9rem;
     font-weight: 600;
 }
@@ -1614,7 +1595,7 @@ button:hover {
     justify-content: space-between;
     gap: 20px;
     padding: 14px 0;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .meta-item:last-child {
@@ -1622,13 +1603,13 @@ button:hover {
 }
 
 .meta-label {
-    color: #777777;
+    color: #64748b;
     font-size: 0.95rem;
 }
 
 .meta-value {
     font-weight: 700;
-    color: #111111;
+    color: #ffffff;
     text-align: right;
 }
 
@@ -1646,7 +1627,7 @@ button:hover {
 .curriculum-card:hover {
     transform: translateY(-6px);
     border-color: rgba(255, 140, 0, 0.45);
-    box-shadow: 0 18px 40px rgba(255, 140, 0, 0.12);
+    box-shadow: 0 18px 40px rgba(255, 140, 0, 0.18);
 }
 
 .phase-number {
@@ -1660,19 +1641,19 @@ button:hover {
     justify-content: center;
     font-weight: 700;
     margin-bottom: 16px;
-    box-shadow: 0 10px 20px rgba(255, 140, 0, 0.22);
+    box-shadow: 0 10px 20px rgba(255, 140, 0, 0.25);
 }
 
 .curriculum-card h3 {
     margin: 0 0 12px;
     font-size: 1.15rem;
-    color: #111111;
+    color: #ffffff;
 }
 
 .curriculum-card p {
     margin: 0;
     line-height: 1.7;
-    color: #5f6470;
+    color: #94a3b8;
     font-size: 0.96rem;
 }
 
@@ -1683,7 +1664,7 @@ button:hover {
 
 .curriculum-footer p {
     margin: 0 0 22px;
-    color: #5f6470;
+    color: #94a3b8;
     line-height: 1.7;
 }
 
@@ -1704,7 +1685,7 @@ button:hover {
             rgba(255, 255, 255, 0));
 }
 
-/* Tablet */
+/* Responsive Styles for Modal & Layouts */
 @media (max-width: 991px) {
     .curriculum-section {
         padding: 75px 20px;
@@ -1719,7 +1700,121 @@ button:hover {
     }
 }
 
-/* Mobile */
+@media (max-width: 768px) {
+    .payment-content {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .payment-modal {
+        padding: 20px;
+        margin: 20px 0;
+        height: auto;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .faq {
+        padding: 40px 20px;
+    }
+
+    .header {
+        padding: 20px;
+    }
+
+    .hero {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 3rem;
+    }
+
+    .right-hero-container,
+    .left-hero-container {
+        width: 100%;
+    }
+
+    .right-hero-container {
+        align-items: center;
+        text-align: center;
+    }
+
+    .right-hero-container button {
+        margin: 0 auto;
+    }
+
+    .testimonials {
+        padding: 40px 20px;
+    }
+
+    .top-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .profile-container {
+        width: 45%;
+        min-width: 280px;
+        margin-bottom: 2rem;
+    }
+
+    .footer {
+        padding: 40px 20px;
+    }
+
+    .how-it-works {
+        padding: 40px 20px;
+    }
+
+    .wholecontainer {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+
+    .right-footer-container {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .final-cta {
+        padding: 40px 20px;
+    }
+
+    .final-cta-wrap {
+        padding: 26px;
+        text-align: left;
+    }
+
+    .final-cta-buttons {
+        justify-content: flex-start;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.8rem 2rem;
+    }
+
+    .right-footer-container {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .right-footer-container h3 {
+        font-size: 1.1rem;
+    }
+}
+
 @media (max-width: 640px) {
     .curriculum-section {
         padding: 65px 16px;
@@ -1768,292 +1863,142 @@ button:hover {
     }
 }
 
-/* Responsive Design Overrides */
+@media (max-width: 480px) {
+    .header {
+        padding: 15px;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
 
-/* Tablet and Smaller Desktops (max-width: 1024px) */
-@media (max-width: 1024px) {
+    .right-container {
+        justify-content: center;
+    }
 
-    .header,
-    .footer,
-    .hero,
-    .testimonials {
-        padding-left: 40px;
-        padding-right: 40px;
+    .logo-container img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .sitename {
+        font-size: 1.2rem;
     }
 
     .right-hero-container h1 {
-        font-size: 2.5rem;
-        line-height: 3.2rem;
+        font-size: 2rem;
+        line-height: 2.5rem;
     }
-
-    .profile-container {
-        padding: 20px 15px;
-    }
-
-    .logo-footer-container h2 {
-        font-size: 1.2rem;
-    }
-}
-
-/* responsive */
-
-
-/* Tablet (max-width: 768px) */
-@media (max-width: 768px) {
-    .header {
-        padding: 20px 20px 20px 20px;
-        flex-direction: row;
-        /* Keep row but adjust if needed, mostly gap/padding */
-    }
-
-    /* If header breaks on 768, usually simpler to keep it row but smaller, 
-       or full stack if menu is large. Currently just logo and contact. 
-       Let's keep row but reduce gap or stack if very tight. 
-       The previous plan said padding adjustment. */
 
     .hero {
-        flex-direction: column;
-        padding: 40px 20px;
-        gap: 3rem;
+        padding: 30px 15px;
     }
 
-    .right-hero-container,
     .left-hero-container {
-        width: 100%;
+        padding: 25px 20px;
     }
 
-    .right-hero-container {
-        align-items: center;
-        text-align: center;
+    .self-paced-card {
+        padding: 18px 18px;
     }
 
-    .right-hero-container button {
-        margin: 0 auto;
+    .self-paced-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .self-paced-price {
+        font-size: 1.4rem;
+    }
+
+    .self-paced-perks {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .benefit-container p {
+        font-size: 0.9rem;
+    }
+
+    .price {
+        font-size: 1.8rem;
     }
 
     .testimonials {
-        padding: 40px 20px;
+        padding: 40px 15px;
+    }
+
+    .testimonials-container h1,
+    .hear-container h1 {
+        text-align: center;
+    }
+
+    .hear-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .real-container {
+        width: 100%;
+        display: block;
     }
 
     .top-container {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 2rem;
+        flex-direction: column;
+        align-items: center;
     }
 
     .profile-container {
-        width: 45%;
-        min-width: 280px;
-        margin-bottom: 2rem;
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .second-proflie-container {
+        transform: none;
+        margin-top: 0;
+        box-shadow: none;
+        border: solid 1px rgba(255, 140, 0, 0.3);
     }
 
     .footer {
+        flex-direction: column;
+        align-items: flex-start;
         padding: 40px 20px;
     }
 
-    .how-it-works {
-        padding: 40px 20px;
-    }
-
-    /* Fix for footer wrapping */
     .wholecontainer {
         flex-direction: column;
         gap: 2rem;
-        align-items: flex-start;
     }
 
-    .right-footer-container {
+    .join,
+    .empower {
+        font-size: 1rem;
+    }
+
+    button {
         width: 100%;
-        justify-content: flex-start;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+
+    .modal {
+        width: 95%;
+        padding: 16px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .how-it-works {
+        padding: 40px 15px;
+    }
+
+    .faq {
+        padding: 40px 15px;
     }
 
     .final-cta {
-        padding: 40px 20px;
-    }
-
-    .final-cta-wrap {
-        padding: 26px;
-        text-align: left;
-    }
-
-    .final-cta-buttons {
-        justify-content: flex-start;
-    }
-
-    .hero-cta-group {
-        flex-direction: column;
-        /* Stack buttons vertically */
-        width: 100%;
-        padding: 0 1rem;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-        width: 100%;
-        /* Full width buttons on mobile for easier tapping */
-        font-size: 1rem;
-        padding: 0.8rem 2rem;
-    }
-
-    .right-footer-container {
-        /* Center everything on mobile for a better "vibe" */
-        align-items: center;
-        text-align: center;
-        width: 100%;
-        margin-top: 20px;
-        /* Space it out from content above */
-    }
-
-    .right-footer-container h3 {
-        font-size: 1.1rem;
-        /* Slightly smaller on mobile */
-    }
-
-    /* Mobile (max-width: 480px) */
-    @media (max-width: 480px) {
-        .header {
-            padding: 15px;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .right-container {
-            justify-content: center;
-        }
-
-        .logo-container img {
-            width: 30px;
-            height: 30px;
-        }
-
-        .sitename {
-            font-size: 1.2rem;
-        }
-
-        .right-hero-container h1 {
-            font-size: 2rem;
-            line-height: 2.5rem;
-        }
-
-        .hero {
-            padding: 30px 15px;
-        }
-
-        .left-hero-container {
-            padding: 25px 20px;
-        }
-
-        .self-paced-card {
-            padding: 18px 18px;
-        }
-
-        .self-paced-top {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 6px;
-        }
-
-        .self-paced-price {
-            font-size: 1.4rem;
-        }
-
-        .self-paced-perks {
-            flex-direction: column;
-            gap: 8px;
-        }
-
-
-        .benefit-container p {
-            font-size: 0.9rem;
-        }
-
-        .price {
-            font-size: 1.8rem;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 40px 15px;
-        }
-
-        .testimonials-container h1,
-        .hear-container h1 {
-            text-align: center;
-        }
-
-        .hear-container h1 {
-            font-size: 1.5rem;
-        }
-
-        .real-container {
-            width: 100%;
-            display: block;
-            /* Ensure it takes full width */
-        }
-
-        .top-container {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .profile-container {
-            width: 100%;
-            margin-bottom: 1.5rem;
-        }
-
-        .second-proflie-container {
-            transform: none;
-            margin-top: 0;
-            box-shadow: none;
-            /* Reset shadow rotation effect if needed, or keep normal shadow */
-            border: solid 1px #e0e0e0;
-            /* Match others */
-        }
-
-        /* Footer */
-        .footer {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 40px 20px;
-        }
-
-        .wholecontainer {
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .join,
-        .empower {
-            font-size: 1rem;
-        }
-
-        button {
-            width: 100%;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-        }
-
-        /* Ensure modal overlays and modals work on mobile */
-        .modal {
-            width: 95%;
-            padding: 16px;
-        }
-
-        .modal-header h2 {
-            font-size: 1.2rem;
-        }
-
-        .how-it-works {
-            padding: 40px 15px;
-        }
-
-        .faq {
-            padding: 40px 15px;
-        }
-
-        .final-cta {
-            padding: 40px 15px;
-        }
+        padding: 40px 15px;
     }
 }
