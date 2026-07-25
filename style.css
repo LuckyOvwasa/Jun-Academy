@@ -420,6 +420,10 @@ button:hover {
     color: #0077b5;
 }
 
+.social-icons a[aria-label="TikTok"]:hover {
+    color: #ff0050;
+}
+
 .wholecontainer {
     width: 100%;
     height: auto;
@@ -658,6 +662,21 @@ button:hover {
     font-size: 32px;
     font-weight: bold;
     margin-top: 12px;
+}
+
+.modal-alt-note {
+    margin-top: 14px;
+    font-size: 0.88rem;
+    color: #777;
+    line-height: 1.5;
+    padding: 10px 14px;
+    background: #f9f9f9;
+    border-left: 3px solid #ff8c00;
+    border-radius: 6px;
+}
+
+.modal-alt-note strong {
+    color: #ff8c00;
 }
 
 /* Actions */
@@ -904,6 +923,33 @@ button:hover {
     color: #333;
 }
 
+.amount-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #ff8c00;
+    color: #fff;
+    padding: 2px 7px;
+    border-radius: 999px;
+    margin-left: 4px;
+    vertical-align: middle;
+    letter-spacing: 0.03em;
+}
+
+.amount-tag.alt {
+    background: rgba(255, 140, 0, 0.12);
+    color: #d97706;
+    border: 1px solid rgba(255, 140, 0, 0.25);
+}
+
+.alt-amount-text {
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+    color: #666 !important;
+    margin-top: 4px;
+}
+
+
 .copy-row {
     display: flex;
     align-items: center;
@@ -1091,15 +1137,74 @@ button:hover {
 }
 
 .founding-badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     background: white;
     border: 1px solid #ffd8b5;
     color: #ff6b00;
     font-weight: 700;
     font-size: 0.85rem;
-    padding: 6px 10px;
+    padding: 6px 14px;
     border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(255, 107, 0, 0.08);
 }
+
+.pulse-dot {
+    width: 9px;
+    height: 9px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: pulseRing 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+    70% {
+        transform: scale(1.15);
+        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
+}
+
+.urgency-blink {
+    font-weight: 800;
+    color: #e67e00;
+    animation: textBlink 1.4s infinite alternate ease-in-out;
+}
+
+.urgency-blink-inline {
+    font-weight: 800;
+    color: #ff7d01;
+    animation: textBlink 1.4s infinite alternate ease-in-out;
+}
+
+@keyframes textBlink {
+    0% {
+        opacity: 1;
+        color: #ff7d01;
+        text-shadow: 0 0 1px rgba(255, 125, 1, 0.3);
+    }
+    50% {
+        opacity: 0.45;
+        color: #e65100;
+    }
+    100% {
+        opacity: 1;
+        color: #ff7d01;
+        text-shadow: 0 0 8px rgba(255, 125, 1, 0.5);
+    }
+}
+
 
 .founding-note {
     margin-top: 10px;
@@ -1108,7 +1213,144 @@ button:hover {
     line-height: 1.5;
 }
 
+/* Self-Paced Option */
+.self-paced-option {
+    width: 100%;
+    margin-top: 0.6rem;
+}
 
+.option-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 1rem;
+}
+
+.option-divider .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #d4d4d4, transparent);
+}
+
+.option-divider .divider-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: transparent;
+    padding: 0;
+}
+
+.self-paced-card {
+    background: #ffffff;
+    border: 1.5px dashed #ffd0a0;
+    border-radius: 18px;
+    padding: 22px 24px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.self-paced-card:hover {
+    border-color: #ff8c00;
+    box-shadow: 0 4px 18px rgba(255, 140, 0, 0.1);
+}
+
+.self-paced-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.self-paced-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #ff8c00;
+    background: rgba(255, 140, 0, 0.1);
+    border: 1px solid rgba(255, 140, 0, 0.2);
+    padding: 5px 12px;
+    border-radius: 999px;
+}
+
+.self-paced-price {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #111;
+    margin: 0;
+}
+
+.self-paced-desc {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: #666;
+    margin: 0 0 14px;
+}
+
+.self-paced-perks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.self-paced-perk {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #444;
+    background: #f8f8f8;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid #eee;
+}
+
+.self-paced-perk .material-icons {
+    font-size: 16px;
+    color: #ff8c00;
+    background: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+.btn-self-paced {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.8rem 2rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: #ff8c00;
+    border: 2px solid #ffd0a0;
+}
+
+.btn-self-paced:hover {
+    background: #ff8c00;
+    color: #fff;
+    border-color: #ff8c00;
+    transform: translateY(-2px);
+}
+
+.btn-self-paced .material-symbols-outlined {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.btn-self-paced:hover .material-symbols-outlined {
+    transform: translateX(3px);
+}
 .final-cta {
     padding: 80px;
     background: linear-gradient(120deg, #fff6ef 0%, #ffffff 70%);
@@ -1701,6 +1943,26 @@ button:hover {
         .left-hero-container {
             padding: 25px 20px;
         }
+
+        .self-paced-card {
+            padding: 18px 18px;
+        }
+
+        .self-paced-top {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .self-paced-price {
+            font-size: 1.4rem;
+        }
+
+        .self-paced-perks {
+            flex-direction: column;
+            gap: 8px;
+        }
+
 
         .benefit-container p {
             font-size: 0.9rem;
