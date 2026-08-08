@@ -194,37 +194,40 @@ if (successModalOverlay) {
   });
 }
 
-const copyBtn = document.getElementById("copyAccountBtn");
-const accountNumberText = document.getElementById("accountNumber");
+const copyBtns = document.querySelectorAll(".copy-icon");
 const copyToast = document.getElementById("copyToast");
 
-if (copyBtn && accountNumberText) {
-  copyBtn.addEventListener("click", () => {
-    const number = accountNumberText.innerText;
+if (copyBtns.length > 0) {
+  copyBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+      const accountElem = targetId ? document.getElementById(targetId) : (btn.previousElementSibling || document.getElementById("accountNumber"));
+      if (!accountElem) return;
 
-    navigator.clipboard.writeText(number)
-      .then(() => {
-        // Change icon to checkmark
-        copyBtn.innerText = "check";
+      const number = accountElem.innerText.trim();
 
-        // Show toast message
-        if (copyToast) {
-          copyToast.classList.add("show");
+      navigator.clipboard.writeText(number)
+        .then(() => {
+          const originalIcon = btn.innerText;
+          btn.innerText = "check";
+
+          if (copyToast) {
+            copyToast.classList.add("show");
+
+            setTimeout(() => {
+              copyToast.classList.remove("show");
+            }, 2000);
+          }
 
           setTimeout(() => {
-            copyToast.classList.remove("show");
-          }, 2000);
-        }
-
-        // Revert icon
-        setTimeout(() => {
-          copyBtn.innerText = "content_copy";
-        }, 1500);
-      })
-      .catch(err => {
-        console.error("Copy failed:", err);
-        alert("Unable to copy. Please copy manually.");
-      });
+            btn.innerText = originalIcon;
+          }, 1500);
+        })
+        .catch(err => {
+          console.error("Copy failed:", err);
+          alert("Unable to copy. Please copy manually.");
+        });
+    });
   });
 }
 

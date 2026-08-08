@@ -916,10 +916,37 @@ button:hover {
     margin-bottom: 20px;
 }
 
+.account-card-header {
+    margin-bottom: 16px;
+}
+
+.account-card-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #ff8c00;
+    background: rgba(255, 125, 1, 0.15);
+    border: 1px solid rgba(255, 125, 1, 0.3);
+    padding: 4px 10px;
+    border-radius: 999px;
+    display: inline-block;
+}
+
+.bank-divider {
+    height: 1px;
+    background: rgba(255, 125, 1, 0.15);
+    margin: 16px 0;
+}
+
 .detail-row {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+}
+
+.detail-row.mb-0 {
+    margin-bottom: 0;
 }
 
 .detail-group label {
