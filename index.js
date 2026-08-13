@@ -1,137 +1,155 @@
-const openModalBtns = document.querySelectorAll(".js-open-modal");
-const modalOverlay = document.getElementById("modalOverlay");
-const closeModal = document.getElementById("closeModal");
+// Modal Overlays
+const modalCourse1 = document.getElementById("modalOverlayCourse1");
+const modalCourse2 = document.getElementById("modalOverlayCourse2");
+const modalBundle = document.getElementById("modalOverlayBundle");
+const paymentModalOverlay = document.getElementById("paymentModalOverlay");
+const successModalOverlay = document.getElementById("successModalOverlay");
 
-// Open modal
-openModalBtns.forEach(btn => {
+// All Modal Close Buttons
+const closeBtns = document.querySelectorAll(".js-close-modal");
+const closePaymentModalBtn = document.getElementById("closePaymentModal");
+const closeSuccessModalBtn = document.getElementById("closeSuccessModal");
+
+// Open Course 1 Modal
+document.querySelectorAll(".js-open-modal-c1").forEach(btn => {
   btn.addEventListener("click", () => {
-    modalOverlay.classList.add("active");
+    if (modalCourse1) modalCourse1.classList.add("active");
   });
 });
 
-// Close modal (X button)
-if (closeModal) {
-  closeModal.addEventListener("click", () => {
-    modalOverlay.classList.remove("active");
+// Open Course 2 Modal
+document.querySelectorAll(".js-open-modal-c2").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (modalCourse2) modalCourse2.classList.add("active");
   });
-}
+});
 
-// Close modal when clicking outside
-if (modalOverlay) {
-  modalOverlay.addEventListener("click", (e) => {
-    if (e.target === modalOverlay) {
-      modalOverlay.classList.remove("active");
+// Open Bundle Modal
+document.querySelectorAll(".js-open-modal-bundle").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (modalBundle) modalBundle.classList.add("active");
+  });
+});
+
+// Close Info Modals
+closeBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".modal-overlay").forEach(overlay => {
+      if (overlay.id !== "successModalOverlay" && overlay.id !== "paymentModalOverlay") {
+        overlay.classList.remove("active");
+      }
+    });
+  });
+});
+
+// Close Modals on Overlay Backdrop Click
+document.querySelectorAll(".modal-overlay").forEach(overlay => {
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+      overlay.classList.remove("active");
     }
   });
-}
+});
 
+/* --- Continue to Payment Flow --- */
+const continuePaymentBtns = document.querySelectorAll(".js-continue-payment");
+const selectedCourseTitle = document.getElementById("selectedCourseTitle");
+const selectedCoursePriceTag = document.getElementById("selectedCoursePriceTag");
+const courseSelect = document.getElementById("courseSelect");
 
-/* --- Payment Modal Logic --- */
-const continueToPaymentBtn = document.getElementById("continueToPayment");
-const paymentModalOverlay = document.getElementById("paymentModalOverlay");
-const closePaymentModal = document.getElementById("closePaymentModal");
+continuePaymentBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const courseType = btn.getAttribute("data-course-type");
 
-// Switch from Info Modal to Payment Modal
-if (continueToPaymentBtn) {
-  continueToPaymentBtn.addEventListener("click", () => {
-    modalOverlay.classList.remove("active");
-    paymentModalOverlay.classList.add("active");
+    // Close all open info modals
+    if (modalCourse1) modalCourse1.classList.remove("active");
+    if (modalCourse2) modalCourse2.classList.remove("active");
+    if (modalBundle) modalBundle.classList.remove("active");
+
+    // Update Payment Modal Selected Summary
+    if (courseType) {
+      if (courseSelect) {
+        courseSelect.value = courseType;
+      }
+      
+      if (selectedCourseTitle && selectedCoursePriceTag) {
+        if (courseType.includes("UI/UX") && courseType.includes("Live")) {
+          selectedCourseTitle.innerText = "UI/UX Design Bootcamp - Live Cohort";
+          selectedCoursePriceTag.innerText = "₦50,000";
+        } else if (courseType.includes("UI/UX") && courseType.includes("Self-Paced")) {
+          selectedCourseTitle.innerText = "UI/UX Design Bootcamp - Self-Paced";
+          selectedCoursePriceTag.innerText = "₦35,000";
+        } else if (courseType.includes("AI Code") && courseType.includes("Standard")) {
+          selectedCourseTitle.innerText = "The AI Code Bootcamp for Designers";
+          selectedCoursePriceTag.innerText = "₦150,000";
+        } else if (courseType.includes("AI Code") && courseType.includes("Alumni")) {
+          selectedCourseTitle.innerText = "The AI Code Bootcamp for Designers (Jun Alumni)";
+          selectedCoursePriceTag.innerText = "₦100,000";
+        } else if (courseType.includes("Bundle")) {
+          selectedCourseTitle.innerText = "All-Access Both Courses Bundle";
+          selectedCoursePriceTag.innerText = "₦120,000";
+        } else {
+          selectedCourseTitle.innerText = courseType;
+          selectedCoursePriceTag.innerText = "";
+        }
+      }
+    }
+
+    // Open Payment Modal
+    if (paymentModalOverlay) paymentModalOverlay.classList.add("active");
   });
-}
+});
 
-// Close Payment Modal (X button)
-if (closePaymentModal) {
-  closePaymentModal.addEventListener("click", () => {
+// Close Payment Modal
+if (closePaymentModalBtn) {
+  closePaymentModalBtn.addEventListener("click", () => {
     paymentModalOverlay.classList.remove("active");
   });
 }
 
-// Close Payment Modal when clicking outside
-if (paymentModalOverlay) {
-  paymentModalOverlay.addEventListener("click", (e) => {
-    if (e.target === paymentModalOverlay) {
-      paymentModalOverlay.classList.remove("active");
+// Dynamic update if user manually changes dropdown selection inside payment form
+if (courseSelect) {
+  courseSelect.addEventListener("change", (e) => {
+    const val = e.target.value;
+    if (val.includes("UI/UX") && val.includes("Live")) {
+      selectedCourseTitle.innerText = "UI/UX Design Bootcamp - Live Cohort";
+      selectedCoursePriceTag.innerText = "₦50,000";
+    } else if (val.includes("UI/UX") && val.includes("Self-Paced")) {
+      selectedCourseTitle.innerText = "UI/UX Design Bootcamp - Self-Paced";
+      selectedCoursePriceTag.innerText = "₦35,000";
+    } else if (val.includes("AI Code") && val.includes("Standard")) {
+      selectedCourseTitle.innerText = "The AI Code Bootcamp for Designers";
+      selectedCoursePriceTag.innerText = "₦150,000";
+    } else if (val.includes("AI Code") && val.includes("Alumni")) {
+      selectedCourseTitle.innerText = "The AI Code Bootcamp for Designers (Jun Alumni)";
+      selectedCoursePriceTag.innerText = "₦100,000";
+    } else if (val.includes("Bundle")) {
+      selectedCourseTitle.innerText = "All-Access Both Courses Bundle";
+      selectedCoursePriceTag.innerText = "₦120,000";
     }
   });
 }
 
+/* --- Curriculum Tabs Switching --- */
+const tabBtns = document.querySelectorAll(".curriculum-tab-btn");
+const tabPanes = document.querySelectorAll(".curriculum-tab-pane");
+
+tabBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const targetTabId = btn.getAttribute("data-tab");
+
+    // Remove active class from all buttons and panes
+    tabBtns.forEach(b => b.classList.remove("active"));
+    tabPanes.forEach(pane => pane.classList.remove("active"));
+
+    // Set active on clicked button and target pane
+    btn.classList.add("active");
+    const targetPane = document.getElementById(targetTabId);
+    if (targetPane) targetPane.classList.add("active");
+  });
+});
 
 /* --- Form Submission & Success Modal Logic --- */
-// const successModalOverlay = document.getElementById("successModalOverlay");
-// const closeSuccessModalBtn = document.getElementById("closeSuccessModal");
-// const paymentForm = document.querySelector(".confirm-form");
-
-// if (paymentForm) {
-//   paymentForm.addEventListener("submit", function (e) {
-//     e.preventDefault();
-
-//     const formData = new FormData(paymentForm);
-//     const actionUrl = paymentForm.getAttribute("action");
-
-//     const submitBtn = paymentForm.querySelector("button[type='submit']");
-//     const originalBtnText = submitBtn.innerText;
-//     submitBtn.innerText = "Submitting...";
-//     submitBtn.disabled = true;
-
-//     fetch(actionUrl, {
-//       method: "POST",
-//       body: formData,
-//       headers: {
-//         'Accept': 'application/json'
-//       }
-//     })
-//       .then(response => {
-//         if (response.ok) {
-//           // Success
-//           if (paymentModalOverlay) paymentModalOverlay.classList.remove("active");
-
-//           if (successModalOverlay) {
-//             // Small delay to ensure payment modal is gone and transition is smooth
-//             setTimeout(() => {
-//               successModalOverlay.classList.add("active");
-//               successModalOverlay.style.display = "flex"; // Force display
-//             }, 100);
-//           }
-//           paymentForm.reset();
-//         } else {
-//           alert("There was an issue submitting the form. Please try again.");
-//           console.error("Form submission failed:", response);
-//         }
-//       })
-//       .catch(error => {
-//         console.error("Error:", error);
-//         alert("There was an error submitting the form. Please check your connection and try again.");
-//       })
-//       .finally(() => {
-//         submitBtn.innerText = originalBtnText;
-//         submitBtn.disabled = false;
-//       });
-//   });
-// }
-
-// // Close Success Modal
-// if (closeSuccessModalBtn) {
-//   closeSuccessModalBtn.addEventListener("click", () => {
-//     if (successModalOverlay) {
-//       successModalOverlay.classList.remove("active");
-//       successModalOverlay.style.display = ""; // Clear inline style
-//     }
-//   });
-// }
-
-// // Close Success Modal when clicking outside
-// if (successModalOverlay) {
-//   successModalOverlay.addEventListener("click", (e) => {
-//     if (e.target === successModalOverlay) {
-//       successModalOverlay.classList.remove("active");
-//       successModalOverlay.style.display = ""; // Clear inline style
-//     }
-//   });
-// }
-
-/* --- Form Submission & Success Modal Logic --- */
-const successModalOverlay = document.getElementById("successModalOverlay");
-const closeSuccessModalBtn = document.getElementById("closeSuccessModal");
 const paymentForm = document.querySelector(".confirm-form");
 
 if (paymentForm) {
@@ -155,12 +173,10 @@ if (paymentForm) {
     })
       .then(response => {
         if (response.ok) {
-          // Close payment modal
-          paymentModalOverlay.classList.remove("active");
+          if (paymentModalOverlay) paymentModalOverlay.classList.remove("active");
 
-          // Open success modal (after payment modal closes)
           setTimeout(() => {
-            successModalOverlay.classList.add("active");
+            if (successModalOverlay) successModalOverlay.classList.add("active");
           }, 150);
 
           paymentForm.reset();
@@ -181,19 +197,11 @@ if (paymentForm) {
 // Close success modal
 if (closeSuccessModalBtn) {
   closeSuccessModalBtn.addEventListener("click", () => {
-    successModalOverlay.classList.remove("active");
+    if (successModalOverlay) successModalOverlay.classList.remove("active");
   });
 }
 
-// Close success modal on overlay click
-if (successModalOverlay) {
-  successModalOverlay.addEventListener("click", (e) => {
-    if (e.target === successModalOverlay) {
-      successModalOverlay.classList.remove("active");
-    }
-  });
-}
-
+/* --- Clipboard Copy Logic --- */
 const copyBtns = document.querySelectorAll(".copy-icon");
 const copyToast = document.getElementById("copyToast");
 
@@ -201,7 +209,7 @@ if (copyBtns.length > 0) {
   copyBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       const targetId = btn.getAttribute("data-target");
-      const accountElem = targetId ? document.getElementById(targetId) : (btn.previousElementSibling || document.getElementById("accountNumber"));
+      const accountElem = targetId ? document.getElementById(targetId) : null;
       if (!accountElem) return;
 
       const number = accountElem.innerText.trim();
@@ -213,7 +221,6 @@ if (copyBtns.length > 0) {
 
           if (copyToast) {
             copyToast.classList.add("show");
-
             setTimeout(() => {
               copyToast.classList.remove("show");
             }, 2000);
@@ -225,7 +232,7 @@ if (copyBtns.length > 0) {
         })
         .catch(err => {
           console.error("Copy failed:", err);
-          alert("Unable to copy. Please copy manually.");
+          alert("Unable to copy account number. Please copy manually.");
         });
     });
   });

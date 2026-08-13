@@ -129,9 +129,7 @@ img {
     justify-content: space-between;
     align-items: start;
     padding: 80px;
-    background: radial-gradient(ellipse at 80% 20%, rgba(255, 125, 1, 0.12) 0%, rgba(11, 15, 25, 0) 60%),
-        radial-gradient(ellipse at 20% 80%, rgba(255, 125, 1, 0.08) 0%, rgba(11, 15, 25, 0) 60%),
-        #0b0f19;
+    background: #0b0f19;
 }
 
 .right-hero-container {
@@ -1408,7 +1406,7 @@ button:hover {
     border: 1px solid rgba(255, 140, 0, 0.3);
     border-radius: 28px;
     padding: 40px;
-    background: linear-gradient(135deg, rgba(255, 125, 1, 0.1) 0%, rgba(18, 25, 40, 0.95) 100%);
+    background: #121928;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     text-align: center;
 }
@@ -2028,5 +2026,556 @@ button:hover {
 
     .final-cta {
         padding: 40px 15px;
+    }
+}
+
+/* --- Dual-Course Hero & Bundle Card Styles --- */
+.hero {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding: 60px 80px 80px 80px;
+    background: #0b0f19;
+}
+
+.hero-header-wrap {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 125, 1, 0.12);
+    border: 1px solid rgba(255, 125, 1, 0.3);
+    color: #ff9d42;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.hero-header-wrap h1 {
+    font-size: 3.2rem;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-header-wrap p {
+    font-size: 1.15rem;
+    color: #94a3b8;
+    line-height: 1.7;
+    max-width: 760px;
+}
+
+.hero-courses-grid {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+}
+
+.course-hero-card {
+    background: rgba(18, 25, 40, 0.85);
+    border: 1px solid rgba(255, 125, 1, 0.25);
+    border-radius: 28px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.course-hero-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 125, 1, 0.5);
+}
+
+.course-hero-card.course-featured {
+    background: linear-gradient(180deg, rgba(25, 33, 52, 0.95) 0%, rgba(18, 25, 40, 0.85) 100%);
+    border: 1px solid rgba(255, 125, 1, 0.45);
+    box-shadow: 0 20px 60px rgba(255, 125, 1, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.course-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.course-card-badge {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.course-card-badge.badge-accent {
+    background: #ff7d01;
+    color: #ffffff;
+}
+
+.course-track-tag {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ff9d42;
+}
+
+.course-track-tag.tag-accent {
+    color: #38bdf8;
+}
+
+.course-hero-card h2 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.course-date-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ff9d42;
+    background: rgba(255, 125, 1, 0.1);
+    border: 1px solid rgba(255, 125, 1, 0.3);
+    padding: 4px 12px;
+    border-radius: 50px;
+    width: fit-content;
+    margin-top: -8px;
+}
+
+.course-date-tag .material-icons {
+    font-size: 14px;
+    color: #ff8c00;
+}
+
+.course-desc {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+.course-price-box {
+    background: rgba(11, 15, 25, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.price-main {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.price-label {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+.price-sub-row {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+}
+
+.alumni-discount-banner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+}
+
+.alumni-discount-banner span.material-icons {
+    font-size: 1.1rem;
+}
+
+.course-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+.highlight-item span.material-icons {
+    color: #ff7d01;
+    font-size: 1.1rem;
+}
+
+.course-card-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.course-card-actions button {
+    flex: 1;
+    padding: 0.85rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    justify-content: center;
+}
+
+/* Bundle Banner Card */
+.bundle-banner-card {
+    width: 100%;
+    max-width: 1200px;
+    background: #121928;
+    border: 2px solid rgba(255, 125, 1, 0.45);
+    border-radius: 28px;
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.bundle-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 650px;
+}
+
+.bundle-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ff7d01;
+    color: #ffffff;
+    padding: 4px 14px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+.bundle-left h3 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    font-weight: 800;
+}
+
+.bundle-left p {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+}
+
+.bundle-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.bundle-price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.bundle-old-price {
+    font-size: 1.2rem;
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+.bundle-price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.bundle-savings {
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+    padding: 2px 10px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.btn-bundle {
+    padding: 0.9rem 2.2rem;
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+/* --- Curriculum Tabs & Panes --- */
+.curriculum-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.curriculum-tab-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.curriculum-tab-btn span.material-icons {
+    font-size: 1.2rem;
+}
+
+.curriculum-tab-btn:hover {
+    background: rgba(255, 125, 1, 0.2);
+    border-color: rgba(255, 125, 1, 0.4);
+    color: #ffffff;
+}
+
+.curriculum-tab-btn.active {
+    background: #ff7d01;
+    border-color: #ff7d01;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 125, 1, 0.4);
+}
+
+.curriculum-tab-pane {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.curriculum-tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.curriculum-intro-card.intro-accent {
+    border-color: rgba(56, 189, 248, 0.3);
+}
+
+.meta-value.highlight-alumni {
+    color: #4ade80;
+    font-weight: 700;
+}
+
+/* --- Modals Extensions --- */
+.modal-badge-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.modal-pill-badge {
+    background: rgba(255, 125, 1, 0.15);
+    border: 1px solid rgba(255, 125, 1, 0.3);
+    color: #ff7d01;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.modal-pill-badge.alumni-pill {
+    background: rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.3);
+    color: #4ade80;
+}
+
+.modal-pill-badge.bundle-pill {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.3);
+    color: #38bdf8;
+}
+
+.info-box.accent-box {
+    border-color: rgba(56, 189, 248, 0.3);
+}
+
+.alumni-notice-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: #4ade80;
+    margin: 8px 0;
+    font-size: 0.85rem;
+}
+
+.price-inline {
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.info-box.bundle-box {
+    background: rgba(18, 25, 40, 0.9);
+    border-color: rgba(255, 125, 1, 0.4);
+}
+
+.bundle-price-text {
+    font-size: 2.2rem;
+    color: #ffffff;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.old-price-strike {
+    font-size: 1.2rem;
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+.savings-text {
+    color: #4ade80;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.modal-actions-stack {
+    flex-direction: column;
+    gap: 12px;
+}
+
+.curriculum-downloads-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.85rem !important;
+    flex: 1;
+    justify-content: center;
+}
+
+/* Selected Course Notice in Payment Modal */
+.selected-course-notice {
+    background: rgba(255, 125, 1, 0.12);
+    border: 1px solid rgba(255, 125, 1, 0.3);
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.notice-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ff9d42;
+    font-weight: 700;
+}
+
+.selected-course-notice h4 {
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.form-select {
+    width: 100%;
+    background-color: #0b0f19;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.form-select:focus {
+    border-color: #ff7d01;
+}
+
+.btn-accent {
+    background-color: #0284c7 !important;
+}
+
+.btn-accent:hover {
+    background-color: #0369a1 !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 992px) {
+    .hero {
+        padding: 40px 24px;
+    }
+    .bundle-banner-card {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    .bundle-right {
+        align-items: flex-start;
+        width: 100%;
+    }
+    .btn-bundle {
+        width: 100%;
     }
 }
