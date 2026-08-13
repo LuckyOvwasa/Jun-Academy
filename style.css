@@ -2066,9 +2066,6 @@ button:hover {
     line-height: 1.2;
     font-weight: 800;
     color: #ffffff;
-    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .hero-header-wrap p {
@@ -2319,6 +2316,7 @@ button:hover {
     display: flex;
     align-items: baseline;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .bundle-old-price {
@@ -2360,7 +2358,7 @@ button:hover {
 
 .curriculum-tab-btn {
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1.5px solid #64748b;
     color: #cbd5e1;
     padding: 12px 24px;
     border-radius: 50px;
@@ -2577,5 +2575,16 @@ button:hover {
     }
     .btn-bundle {
         width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .bundle-price-wrap {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .bundle-price {
+        font-size: 2rem;
     }
 }
