@@ -71,7 +71,7 @@ continuePaymentBtns.forEach(btn => {
       if (courseSelect) {
         courseSelect.value = courseType;
       }
-      
+
       if (selectedCourseTitle && selectedCoursePriceTag) {
         if (courseType.includes("UI/UX") && courseType.includes("Live")) {
           selectedCourseTitle.innerText = "UI/UX Design Bootcamp - Live Cohort";
@@ -178,6 +178,21 @@ if (paymentForm) {
           setTimeout(() => {
             if (successModalOverlay) successModalOverlay.classList.add("active");
           }, 150);
+
+          // --- Meta Pixel: Track Registration Event ---
+          if (typeof fbq !== 'undefined') {
+            const courseName = selectedCourseTitle ? selectedCourseTitle.innerText : 'Unknown Course';
+            const priceText = selectedCoursePriceTag ? selectedCoursePriceTag.innerText : '';
+            // Extract numeric value from price (e.g., "₦50,000" → 50000)
+            const priceValue = parseInt(priceText.replace(/[^0-9]/g, ''), 10) || 0;
+
+            fbq('track', 'CompleteRegistration', {
+              content_name: courseName,
+              currency: 'NGN',
+              value: priceValue
+            });
+          }
+          // --- End Meta Pixel Tracking ---
 
           paymentForm.reset();
         } else {
