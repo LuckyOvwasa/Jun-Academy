@@ -187,27 +187,27 @@ if (urlCheckParams.get("submitted") === "true") {
 }
 
 if (paymentForm) {
-  paymentForm.addEventListener("submit", async function (e) {
-    e.preventDefault();
+  const submitBtn = paymentForm.querySelector("button[type='submit']");
+  const originalBtnText = submitBtn ? submitBtn.innerText : "Submit Enrollment";
+  let formSubmitted = false;
 
-    const submitBtn = paymentForm.querySelector("button[type='submit']");
-    const originalBtnText = submitBtn ? submitBtn.innerText : "Submit Enrollment";
+  paymentForm.addEventListener("submit", function () {
+    formSubmitted = true;
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.innerText = "Submitting...";
     }
+    // No preventDefault here — the browser needs to do a real POST
+    // so the file input actually gets uploaded to formsubmit.co.
+  });
 
-    try {
-      const formData = new FormData(paymentForm);
-      const response = await fetch("https://formsubmit.co/ajax/9d085fc4a8a1b239e46acbcee1ebd3ed", {
-        method: "POST",
-        body: formData,
-        headers: { "Accept": "application/json" }
-      });
+  const hiddenIframe = document.getElementById("formsubmitHiddenIframe");
+  if (hiddenIframe) {
+    hiddenIframe.addEventListener("load", function () {
+      // Ignore the iframe's initial blank load — only react once a real submit happened
+      if (!formSubmitted) return;
+      formSubmitted = false;
 
-      if (!response.ok) throw new Error("Submission failed with status " + response.status);
-
-      // Success — show the modal immediately, no page reload needed
       if (successModalOverlay) {
         successModalOverlay.classList.add("active");
       }
@@ -216,6 +216,11 @@ if (paymentForm) {
       }
       paymentForm.reset();
 
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalBtnText;
+      }
+
       if (typeof fbq !== 'undefined') {
         const courseName = selectedCourseTitle ? selectedCourseTitle.innerText : 'Jun Academy Course';
         fbq('track', 'CompleteRegistration', {
@@ -223,16 +228,8 @@ if (paymentForm) {
           currency: 'NGN'
         });
       }
-    } catch (err) {
-      console.error("Form submission error:", err);
-      alert("Something went wrong submitting your form. Please check your internet connection and try again — or reach us directly on WhatsApp if it keeps failing.");
-    } finally {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.innerText = originalBtnText;
-      }
-    }
-  });
+    });
+  }
 }
 
 

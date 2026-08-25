@@ -906,12 +906,13 @@
                     <p class="form-subtitle">Submit your receipt details to confirm your spot:</p>
 
                     <form class="confirm-form" action="https://formsubmit.co/9d085fc4a8a1b239e46acbcee1ebd3ed"
-                        method="POST" enctype="multipart/form-data">
+                        method="POST" enctype="multipart/form-data" target="formsubmitHiddenIframe">
                         <!-- FormSubmit Configuration -->
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_subject" value="New Enrollment Submission - Jun Academy">
                         <input type="hidden" name="_replyto" value="%email%">
-                        <input type="hidden" name="_next" id="formSubmitNextInput" value="https://junacademy.com/?submitted=true">
+                        <input type="hidden" name="_next" id="formSubmitNextInput"
+                            value="https://junacademy.com/?submitted=true">
 
                         <div class="form-group">
                             <label>Enrolling For:</label>
@@ -953,6 +954,7 @@
 
                         <button type="submit" class="btn-primary full-width">Submit Enrollment</button>
                     </form>
+                    <iframe name="formsubmitHiddenIframe" id="formsubmitHiddenIframe" style="display:none;"></iframe>
                 </div>
             </div>
         </div>
