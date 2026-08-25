@@ -187,13 +187,63 @@ if (urlCheckParams.get("submitted") === "true") {
 }
 
 if (paymentForm) {
-  paymentForm.addEventListener("submit", function () {
+  paymentForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
     const submitBtn = paymentForm.querySelector("button[type='submit']");
+    const originalBtnText = submitBtn ? submitBtn.innerText : "Submit Enrollment";
     if (submitBtn) {
+      submitBtn.disabled = true;
       submitBtn.innerText = "Submitting...";
+    }
+
+    try {
+      const formData = new FormData(paymentForm);
+      const response = await fetch("https://formsubmit.co/ajax/9d085fc4a8a1b239e46acbcee1ebd3ed", {
+        method: "POST",
+        body: formData,
+        headers: { "Accept": "application/json" }
+      });
+
+      if (!response.ok) throw new Error("Submission failed with status " + response.status);
+
+      // Success — show the modal immediately, no page reload needed
+      if (successModalOverlay) {
+        successModalOverlay.classList.add("active");
+      }
+      if (paymentModalOverlay) {
+        paymentModalOverlay.classList.remove("active");
+      }
+      paymentForm.reset();
+
+      if (typeof fbq !== 'undefined') {
+        const courseName = selectedCourseTitle ? selectedCourseTitle.innerText : 'Jun Academy Course';
+        fbq('track', 'CompleteRegistration', {
+          content_name: courseName,
+          currency: 'NGN'
+        });
+      }
+    } catch (err) {
+      console.error("Form submission error:", err);
+      alert("Something went wrong submitting your form. Please check your internet connection and try again — or reach us directly on WhatsApp if it keeps failing.");
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalBtnText;
+      }
     }
   });
 }
+
+
+// if (paymentForm) {
+//   paymentForm.addEventListener("submit", function () {
+//     const submitBtn = paymentForm.querySelector("button[type='submit']");
+//     if (submitBtn) {
+//       submitBtn.innerText = "Submitting...";
+//     }
+//   });
+// }
 
 // Close success modal
 if (closeSuccessModalBtn) {
