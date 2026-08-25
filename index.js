@@ -160,7 +160,10 @@ if (paymentForm) {
     e.preventDefault();
 
     const formData = new FormData(paymentForm);
-    const actionUrl = paymentForm.getAttribute("action");
+    let actionUrl = paymentForm.getAttribute("action");
+    if (actionUrl && actionUrl.includes("formsubmit.co") && !actionUrl.includes("formsubmit.co/ajax/")) {
+      actionUrl = actionUrl.replace("formsubmit.co/", "formsubmit.co/ajax/");
+    }
 
     const submitBtn = paymentForm.querySelector("button[type='submit']");
     const originalBtnText = submitBtn.innerText;
