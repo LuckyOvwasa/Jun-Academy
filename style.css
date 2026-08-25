@@ -2588,3 +2588,10 @@ button:hover {
         font-size: 2rem;
     }
 }
+
+.optional-tag {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    font-weight: 400;
+    margin-left: 4px;
+}

@@ -95,6 +95,9 @@ continuePaymentBtns.forEach(btn => {
       }
     }
 
+    // Ensure referral input is updated with stored code
+    updateReferralCodeInput();
+
     // Open Payment Modal
     if (paymentModalOverlay) paymentModalOverlay.classList.add("active");
   });
@@ -252,4 +255,55 @@ if (copyBtns.length > 0) {
     });
   });
 }
+
+/* --- Referral / Promo Code Handling --- */
+const referralCodeInput = document.getElementById("referralCodeInput");
+
+// Extract referral code from URL query parameters (e.g. ?ref=MARKETER1, ?code=MARKETER1, ?referrer=MARKETER1)
+function getUrlReferralCode() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return (urlParams.get("ref") || urlParams.get("code") || urlParams.get("referrer") || urlParams.get("src") || "").trim();
+}
+
+// Capture & store referral code if present in URL
+const urlRefCode = getUrlReferralCode();
+if (urlRefCode) {
+  try {
+    sessionStorage.setItem("jun_referral_code", urlRefCode.toUpperCase());
+  } catch (e) {
+    console.warn("Unable to save referral code to sessionStorage:", e);
+  }
+}
+
+// Pre-fill input field with stored referral code
+function updateReferralCodeInput() {
+  if (!referralCodeInput) return;
+  try {
+    const savedCode = sessionStorage.getItem("jun_referral_code");
+    if (savedCode) {
+      referralCodeInput.value = savedCode;
+    }
+  } catch (e) {
+    console.warn("Unable to read referral code from sessionStorage:", e);
+  }
+}
+
+// Save manual edits to sessionStorage
+if (referralCodeInput) {
+  referralCodeInput.addEventListener("input", (e) => {
+    const codeVal = e.target.value.trim().toUpperCase();
+    try {
+      if (codeVal) {
+        sessionStorage.setItem("jun_referral_code", codeVal);
+      } else {
+        sessionStorage.removeItem("jun_referral_code");
+      }
+    } catch (e) {
+      console.warn("Unable to update referral code in sessionStorage:", e);
+    }
+  });
+}
+
+// Initial populate on script load
+updateReferralCodeInput();
 
