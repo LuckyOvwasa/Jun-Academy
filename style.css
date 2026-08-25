@@ -2595,3 +2595,11 @@ button:hover {
     font-weight: 400;
     margin-left: 4px;
 }
+
+.readonly-ref-input {
+    background-color: rgba(74, 222, 128, 0.08) !important;
+    color: #4ade80 !important;
+    border-color: rgba(74, 222, 128, 0.4) !important;
+    font-weight: 700;
+    cursor: not-allowed;
+}

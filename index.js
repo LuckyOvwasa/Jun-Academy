@@ -259,7 +259,7 @@ if (copyBtns.length > 0) {
 /* --- Referral / Promo Code Handling --- */
 const referralCodeInput = document.getElementById("referralCodeInput");
 
-// Extract referral code from URL query parameters (e.g. ?ref=MARKETER1, ?code=MARKETER1, ?referrer=MARKETER1)
+// Extract referral code from URL query parameters (e.g. ?ref=FUNKE, ?code=FUNKE, ?referrer=FUNKE)
 function getUrlReferralCode() {
   const urlParams = new URLSearchParams(window.location.search);
   return (urlParams.get("ref") || urlParams.get("code") || urlParams.get("referrer") || urlParams.get("src") || "").trim();
@@ -270,6 +270,7 @@ const urlRefCode = getUrlReferralCode();
 if (urlRefCode) {
   try {
     sessionStorage.setItem("jun_referral_code", urlRefCode.toUpperCase());
+    sessionStorage.setItem("jun_ref_from_url", "true");
   } catch (e) {
     console.warn("Unable to save referral code to sessionStorage:", e);
   }
@@ -280,17 +281,25 @@ function updateReferralCodeInput() {
   if (!referralCodeInput) return;
   try {
     const savedCode = sessionStorage.getItem("jun_referral_code");
+    const isFromUrl = sessionStorage.getItem("jun_ref_from_url") === "true";
+
     if (savedCode) {
       referralCodeInput.value = savedCode;
+      if (isFromUrl) {
+        referralCodeInput.readOnly = true;
+        referralCodeInput.classList.add("readonly-ref-input");
+        referralCodeInput.title = "Referral code applied automatically via referral link";
+      }
     }
   } catch (e) {
     console.warn("Unable to read referral code from sessionStorage:", e);
   }
 }
 
-// Save manual edits to sessionStorage
+// Save manual edits to sessionStorage (only when not locked by URL)
 if (referralCodeInput) {
   referralCodeInput.addEventListener("input", (e) => {
+    if (referralCodeInput.readOnly) return;
     const codeVal = e.target.value.trim().toUpperCase();
     try {
       if (codeVal) {
