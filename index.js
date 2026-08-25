@@ -155,63 +155,43 @@ tabBtns.forEach(btn => {
 /* --- Form Submission & Success Modal Logic --- */
 const paymentForm = document.querySelector(".confirm-form");
 
+// Dynamically set _next URL to return to current page with ?submitted=true
+const formSubmitNextInput = document.getElementById("formSubmitNextInput");
+if (formSubmitNextInput) {
+  const currentOrigin = window.location.origin + window.location.pathname;
+  formSubmitNextInput.value = currentOrigin + "?submitted=true";
+}
+
+// Check if returning from a successful FormSubmit redirect
+const urlCheckParams = new URLSearchParams(window.location.search);
+if (urlCheckParams.get("submitted") === "true") {
+  if (successModalOverlay) {
+    successModalOverlay.classList.add("active");
+  }
+
+  // --- Meta Pixel: Track Registration Event ---
+  if (typeof fbq !== 'undefined') {
+    const courseName = selectedCourseTitle ? selectedCourseTitle.innerText : 'Jun Academy Course';
+    fbq('track', 'CompleteRegistration', {
+      content_name: courseName,
+      currency: 'NGN'
+    });
+  }
+
+  // Clean URL without page refresh
+  try {
+    window.history.replaceState({}, document.title, window.location.pathname);
+  } catch (e) {
+    console.warn("Unable to update browser history URL:", e);
+  }
+}
+
 if (paymentForm) {
-  paymentForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const formData = new FormData(paymentForm);
-    let actionUrl = paymentForm.getAttribute("action");
-    if (actionUrl && actionUrl.includes("formsubmit.co") && !actionUrl.includes("formsubmit.co/ajax/")) {
-      actionUrl = actionUrl.replace("formsubmit.co/", "formsubmit.co/ajax/");
-    }
-
+  paymentForm.addEventListener("submit", function () {
     const submitBtn = paymentForm.querySelector("button[type='submit']");
-    const originalBtnText = submitBtn.innerText;
-    submitBtn.innerText = "Submitting...";
-    submitBtn.disabled = true;
-
-    fetch(actionUrl, {
-      method: "POST",
-      body: formData,
-      headers: {
-        "Accept": "application/json"
-      }
-    })
-      .then(response => {
-        if (response.ok) {
-          if (paymentModalOverlay) paymentModalOverlay.classList.remove("active");
-
-          setTimeout(() => {
-            if (successModalOverlay) successModalOverlay.classList.add("active");
-          }, 150);
-
-          // --- Meta Pixel: Track Registration Event ---
-          if (typeof fbq !== 'undefined') {
-            const courseName = selectedCourseTitle ? selectedCourseTitle.innerText : 'Unknown Course';
-            const priceText = selectedCoursePriceTag ? selectedCoursePriceTag.innerText : '';
-            // Extract numeric value from price (e.g., "₦50,000" → 50000)
-            const priceValue = parseInt(priceText.replace(/[^0-9]/g, ''), 10) || 0;
-
-            fbq('track', 'CompleteRegistration', {
-              content_name: courseName,
-              currency: 'NGN',
-              value: priceValue
-            });
-          }
-          // --- End Meta Pixel Tracking ---
-
-          paymentForm.reset();
-        } else {
-          alert("There was an issue submitting the form. Please try again.");
-        }
-      })
-      .catch(() => {
-        alert("Network error. Please try again.");
-      })
-      .finally(() => {
-        submitBtn.innerText = originalBtnText;
-        submitBtn.disabled = false;
-      });
+    if (submitBtn) {
+      submitBtn.innerText = "Submitting...";
+    }
   });
 }
 
