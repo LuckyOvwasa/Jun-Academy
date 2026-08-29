@@ -1,3 +1,51 @@
+/* --- Theme Engine (Light / Dark Mode) --- */
+const themeToggleBtn = document.getElementById("themeToggleBtn");
+const themeToggleIcon = document.getElementById("themeToggleIcon");
+const themeToggleText = document.getElementById("themeToggleText");
+
+function applyTheme(theme) {
+  if (theme === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+    if (themeToggleIcon) themeToggleIcon.innerText = "light_mode";
+    if (themeToggleText) themeToggleText.innerText = "Light";
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+    if (themeToggleIcon) themeToggleIcon.innerText = "dark_mode";
+    if (themeToggleText) themeToggleText.innerText = "Dark";
+  }
+}
+
+function getInitialTheme() {
+  const savedTheme = localStorage.getItem("jun_academy_theme");
+  if (savedTheme) {
+    return savedTheme;
+  }
+  if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+    return "light";
+  }
+  return "dark";
+}
+
+const initialTheme = getInitialTheme();
+applyTheme(initialTheme);
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener("click", () => {
+    const currentTheme = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+    const nextTheme = currentTheme === "light" ? "dark" : "light";
+    localStorage.setItem("jun_academy_theme", nextTheme);
+    applyTheme(nextTheme);
+  });
+}
+
+if (window.matchMedia) {
+  window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
+    if (!localStorage.getItem("jun_academy_theme")) {
+      applyTheme(e.matches ? "light" : "dark");
+    }
+  });
+}
+
 // Modal Overlays
 const modalCourse1 = document.getElementById("modalOverlayCourse1");
 const modalCourse2 = document.getElementById("modalOverlayCourse2");

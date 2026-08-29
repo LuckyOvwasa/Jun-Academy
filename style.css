@@ -1,5 +1,124 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Noto+Sans+Bhaiksuki&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+    --bg-main: #0b0f19;
+    --bg-header: rgba(11, 15, 25, 0.95);
+    --bg-card: rgba(18, 25, 40, 0.85);
+    --bg-card-solid: #131927;
+    --bg-card-alt: #1e293b;
+    --bg-modal: #151c2e;
+    --bg-input: #0b0f19;
+
+    --text-primary: #ffffff;
+    --text-body: #e2e8f0;
+    --text-muted: #cbd5e1;
+    --text-subtle: #94a3b8;
+
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-card: rgba(255, 255, 255, 0.12);
+
+    --shadow-color: rgba(0, 0, 0, 0.5);
+
+    --toggle-btn-bg: rgba(255, 255, 255, 0.08);
+    --toggle-btn-border: rgba(255, 255, 255, 0.15);
+    --toggle-btn-text: #ffffff;
+    --toggle-btn-icon: #ffb703;
+    --toggle-btn-hover: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="light"] {
+    --bg-main: #f8fafc;
+    --bg-header: rgba(255, 255, 255, 0.92);
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --bg-card-solid: #ffffff;
+    --bg-card-alt: #f1f5f9;
+    --bg-modal: #ffffff;
+    --bg-input: #ffffff;
+
+    --text-primary: #0f172a;
+    --text-body: #1e293b;
+    --text-muted: #334155;
+    --text-subtle: #64748b;
+
+    --border-color: rgba(15, 23, 42, 0.1);
+    --border-card: rgba(15, 23, 42, 0.12);
+
+    --shadow-color: rgba(15, 23, 42, 0.08);
+
+    --toggle-btn-bg: rgba(15, 23, 42, 0.06);
+    --toggle-btn-border: rgba(15, 23, 42, 0.15);
+    --toggle-btn-text: #0f172a;
+    --toggle-btn-icon: #d97706;
+    --toggle-btn-hover: rgba(15, 23, 42, 0.12);
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: var(--toggle-btn-bg);
+    border: 1px solid var(--toggle-btn-border);
+    color: var(--toggle-btn-text);
+    padding: 5px 12px !important;
+    border-radius: 50px;
+    font-size: 0.8rem !important;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-right: 6px;
+    line-height: 1;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle-btn:hover {
+    background: var(--toggle-btn-hover);
+    transform: translateY(-1px);
+    border-color: #ff7d01;
+}
+
+.theme-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle-btn .material-icons {
+    font-size: 1.0rem !important;
+    color: var(--toggle-btn-icon) !important;
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    transition: transform 0.4s ease;
+    display: inline-block;
+    line-height: 1;
+}
+
+.theme-toggle-btn:hover .material-icons {
+    transform: rotate(25deg);
+}
+
+/* Responsive Theme Toggle Rules for Mobile & Tablets (e.g. iPhone 16 Pro Max) */
+@media (max-width: 768px) {
+    #themeToggleText {
+        display: none;
+    }
+
+    .theme-toggle-btn {
+        padding: 6px !important;
+        border-radius: 50px;
+        min-width: 32px;
+        min-height: 32px;
+        width: 32px;
+        height: 32px;
+        margin-right: 0;
+    }
+
+    .theme-toggle-btn .material-icons {
+        font-size: 0.95rem !important;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,8 +128,8 @@
 }
 
 body {
-    background-color: #0b0f19;
-    color: #e2e8f0;
+    background-color: var(--bg-main);
+    color: var(--text-body);
     overflow-x: hidden;
 }
 
@@ -418,7 +537,7 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     padding: 60px 80px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: none;
 }
 
 .business-socials {
@@ -471,8 +590,8 @@ button:hover {
 .wholecontainer {
     width: 100%;
     height: auto;
-    background-color: #070a11;
-    color: #e2e8f0;
+    background-color: transparent;
+    color: inherit;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -1910,7 +2029,14 @@ button:hover {
         padding: 15px;
         flex-direction: column;
         align-items: center;
-        gap: 15px;
+        gap: 12px;
+    }
+
+    .left-container {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
     }
 
     .right-container {
@@ -2651,4 +2777,414 @@ button:hover {
     .left-hero-container>*:last-child {
         margin-bottom: 10px;
     }
+}
+
+/* ==========================================================================
+   Light Theme Rules & Overrides ([data-theme="light"])
+   ========================================================================== */
+
+[data-theme="light"] {
+    background-color: #f8fafc;
+    color: #1e293b;
+}
+
+[data-theme="light"] .header {
+    background-color: rgba(255, 255, 255, 0.92);
+    border-bottom-color: rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .header a,
+[data-theme="light"] .sitename {
+    color: #0f172a;
+}
+
+[data-theme="light"] .left-container p {
+    color: #334155;
+}
+
+[data-theme="light"] .hero {
+    background: #f8fafc;
+}
+
+[data-theme="light"] .hero-header-wrap h1 {
+    color: #0f172a;
+    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .hero-header-wrap p {
+    color: #475569;
+}
+
+[data-theme="light"] .course-hero-card {
+    background: #ffffff;
+    border-color: rgba(255, 125, 1, 0.3);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+[data-theme="light"] .course-hero-card.course-featured {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border-color: rgba(255, 125, 1, 0.5);
+    box-shadow: 0 15px 35px rgba(255, 125, 1, 0.12);
+}
+
+[data-theme="light"] .course-hero-card h2 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .course-card-badge {
+    background: rgba(15, 23, 42, 0.06);
+    color: #334155;
+}
+
+[data-theme="light"] .course-card-badge.badge-accent {
+    background: #ff7d01;
+    color: #ffffff;
+}
+
+[data-theme="light"] .course-desc {
+    color: #475569;
+}
+
+[data-theme="light"] .course-price-box {
+    background: #f8fafc;
+    border-color: rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .price-main {
+    color: #0f172a;
+}
+
+[data-theme="light"] .price-label,
+[data-theme="light"] .price-sub-row {
+    color: #475569;
+}
+
+[data-theme="light"] .highlight-item {
+    color: #334155;
+}
+
+[data-theme="light"] .btn-secondary {
+    background-color: #ffffff;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+}
+
+[data-theme="light"] .btn-secondary:hover {
+    background-color: #f1f5f9;
+    border-color: #94a3b8;
+}
+
+[data-theme="light"] .bundle-banner-card {
+    background: #ffffff;
+    border-color: rgba(255, 125, 1, 0.5);
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .bundle-left h3 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .bundle-left p {
+    color: #475569;
+}
+
+[data-theme="light"] .bundle-price {
+    color: #0f172a;
+}
+
+[data-theme="light"] .bundle-old-price {
+    color: #94a3b8;
+}
+
+[data-theme="light"] .curriculum-section {
+    background: #f1f5f9;
+}
+
+[data-theme="light"] .curriculum-header h2 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .curriculum-header p {
+    color: #475569;
+}
+
+[data-theme="light"] .curriculum-tab-btn {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    color: #334155;
+}
+
+[data-theme="light"] .curriculum-tab-btn:hover {
+    background: rgba(255, 125, 1, 0.1);
+    border-color: #ff7d01;
+    color: #ff7d01;
+}
+
+[data-theme="light"] .curriculum-tab-btn.active {
+    background: #ff7d01;
+    color: #ffffff;
+    border-color: #ff7d01;
+}
+
+[data-theme="light"] .curriculum-intro-card,
+[data-theme="light"] .curriculum-meta-card,
+[data-theme="light"] .curriculum-card {
+    background: #ffffff;
+    border-color: rgba(15, 23, 42, 0.1);
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .curriculum-intro-card h3,
+[data-theme="light"] .curriculum-card h3 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .curriculum-intro-card p,
+[data-theme="light"] .curriculum-card p,
+[data-theme="light"] .curriculum-footer p {
+    color: #475569;
+}
+
+[data-theme="light"] .curriculum-tools span {
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .meta-label {
+    color: #64748b;
+}
+
+[data-theme="light"] .meta-value {
+    color: #0f172a;
+}
+
+[data-theme="light"] .how-it-works {
+    background: #f8fafc;
+}
+
+[data-theme="light"] .how-wrap h2 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .how-sub {
+    color: #475569;
+}
+
+[data-theme="light"] .how-card {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .how-card h3 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .how-card p {
+    color: #475569;
+}
+
+[data-theme="light"] .testimonials {
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+[data-theme="light"] .hear-container h1 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .real-container p {
+    color: #475569;
+}
+
+[data-theme="light"] .profile-container {
+    background: #ffffff;
+    border-color: rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+}
+
+[data-theme="light"] .name-container h2 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .quote {
+    color: #334155;
+}
+
+[data-theme="light"] .quote-icon-container {
+    border-color: rgba(15, 23, 42, 0.1);
+    background-color: rgba(255, 125, 1, 0.1);
+}
+
+[data-theme="light"] .faq {
+    background: #f8fafc;
+}
+
+[data-theme="light"] .faq-wrap h2 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .faq-sub {
+    color: #475569;
+}
+
+[data-theme="light"] .faq-item {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+}
+
+[data-theme="light"] .faq-item summary {
+    color: #0f172a;
+}
+
+[data-theme="light"] .faq-item p {
+    color: #475569;
+}
+
+[data-theme="light"] .final-cta {
+    background: #f1f5f9;
+}
+
+[data-theme="light"] .final-cta-wrap {
+    background: #ffffff;
+    border: 1px solid rgba(255, 125, 1, 0.3);
+    box-shadow: 0 15px 40px rgba(15, 23, 42, 0.06);
+}
+
+[data-theme="light"] .final-cta h2 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .final-cta p,
+[data-theme="light"] .final-cta-note {
+    color: #475569;
+}
+
+[data-theme="light"] .footer,
+[data-theme="light"] .wholecontainer {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #1e293b;
+    border-top: none !important;
+}
+
+[data-theme="light"] .logo-footer-container h2,
+[data-theme="light"] .right-footer-container h3 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .left-footer-container h4,
+[data-theme="light"] .phone-number {
+    color: #059669;
+}
+
+[data-theme="light"] .empower,
+[data-theme="light"] .join,
+[data-theme="light"] .business-socials p {
+    color: #475569;
+}
+
+[data-theme="light"] .linkedin-container a {
+    color: #0284c7;
+}
+
+[data-theme="light"] .modal {
+    background-color: #ffffff;
+    color: #1e293b;
+    border: 1px solid rgba(15, 23, 42, 0.15);
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2);
+}
+
+[data-theme="light"] .modal-header h2 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .close-btn {
+    color: #64748b;
+}
+
+[data-theme="light"] .close-btn:hover {
+    color: #0f172a;
+}
+
+[data-theme="light"] .features li {
+    color: #334155;
+}
+
+[data-theme="light"] .info-box {
+    background-color: #f8fafc;
+    border-color: rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .info-box p {
+    color: #334155;
+}
+
+[data-theme="light"] .price-inline,
+[data-theme="light"] .bundle-price-text {
+    color: #0f172a;
+}
+
+[data-theme="light"] .account-card {
+    background: #f8fafc;
+    border-color: rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .bank-option p {
+    color: #0f172a;
+}
+
+[data-theme="light"] .detail-group label {
+    color: #64748b;
+}
+
+[data-theme="light"] .detail-group p {
+    color: #0f172a;
+}
+
+[data-theme="light"] .payment-form-col h3 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .form-subtitle,
+[data-theme="light"] .modal-subtitle {
+    color: #64748b;
+}
+
+[data-theme="light"] .form-group label {
+    color: #334155;
+}
+
+[data-theme="light"] input[type="text"],
+[data-theme="light"] input[type="email"],
+[data-theme="light"] input[type="tel"],
+[data-theme="light"] input[type="file"],
+[data-theme="light"] select.form-select {
+    background-color: #ffffff;
+    color: #0f172a;
+    border: 1px solid rgba(15, 23, 42, 0.2);
+}
+
+[data-theme="light"] input::placeholder {
+    color: #94a3b8;
+}
+
+[data-theme="light"] .selected-course-notice {
+    background: rgba(255, 125, 1, 0.08);
+    border-color: rgba(255, 125, 1, 0.25);
+}
+
+[data-theme="light"] .selected-course-notice h4 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .support-box {
+    background: #f1f5f9;
+    border-color: rgba(15, 23, 42, 0.1);
+    color: #475569;
 }
