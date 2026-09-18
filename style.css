@@ -3224,8 +3224,21 @@ button:hover {
     color: #0f172a;
 }
 
+[data-theme="light"] .warning-box {
+    background: rgba(15, 23, 42, 0.05);
+    color: #334155;
+}
+
+[data-theme="light"] .warning-box p {
+    color: #334155;
+}
+
 [data-theme="light"] .support-box {
     background: #f1f5f9;
     border-color: rgba(15, 23, 42, 0.1);
     color: #475569;
+}
+
+[data-theme="light"] .support-box strong {
+    color: #0f172a;
 }
