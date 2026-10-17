@@ -20,9 +20,6 @@ function getInitialTheme() {
   if (savedTheme) {
     return savedTheme;
   }
-  if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
-    return "light";
-  }
   return "dark";
 }
 
@@ -38,13 +35,13 @@ if (themeToggleBtn) {
   });
 }
 
-if (window.matchMedia) {
-  window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
-    if (!localStorage.getItem("jun_academy_theme")) {
-      applyTheme(e.matches ? "light" : "dark");
-    }
-  });
-}
+// if (window.matchMedia) {
+//   window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
+//     if (!localStorage.getItem("jun_academy_theme")) {
+//       applyTheme(e.matches ? "light" : "dark");
+//     }
+//   });
+// }
 
 // Modal Overlays
 const modalCourse1 = document.getElementById("modalOverlayCourse1");
